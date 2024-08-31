@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View for Travel Booking -->
+    <record id="view_travel_booking_form" model="ir.ui.view">
+        <field name="name">travel.booking.form</field>
+        <field name="model">travel.booking</field>
+        <field name="arch" type="xml">
+            <form string="Travel Booking">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm"  invisible="status !='pending'" class="status"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="status != 'pending'" ></button>
+                    <field name="status" widget="statusbar" statusbar_visible="pending,confirmed" class='btn-success'></field>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="trip_id"/>
+                        <field name="booking_date"/>
+                        <field name="customer_id"/>
+                    </group>
+                    <group>
+                        <!-- <field name="payment_id" widget="many2many_tags"/> -->
+                    </group>    
+                </sheet>
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Travel Booking -->
+    <record id="view_travel_booking_tree" model="ir.ui.view" >
+        <field name="name">travel.booking.tree</field>
+        <field name="model">travel.booking</field>
+        <field name="arch" type="xml">
+            <tree string="Travel Bookings" >
+                <field name="reference" group="group_travel_agency_user"></field>
+                <field name="trip_id"/>
+                <field name="booking_date"/>
+                <field name="customer_id"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Travel Booking -->
+    <record id="action_travel_booking" model="ir.actions.act_window">
+        <field name="name">Travel Bookings</field>
+        <field name="res_model">travel.booking</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first travel booking
+            </p>
+        </field>
+    </record>
+
+</odoo>

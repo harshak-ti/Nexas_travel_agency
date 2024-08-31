@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View for Travel Report -->
+    <record id="view_travel_report_form" model="ir.ui.view">
+        <field name="name">travel.report.form</field>
+        <field name="model">travel.report</field>
+        <field name="arch" type="xml">
+            <form string="Travel Report">
+                <sheet>
+                    <group>
+                        <field name="report_type"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="data" widget="binary"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Travel Report -->
+    <record id="view_travel_report_tree" model="ir.ui.view">
+        <field name="name">travel.report.tree</field>
+        <field name="model">travel.report</field>
+        <field name="arch" type="xml">
+            <tree string="Travel Reports">
+                <field name="report_type"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View for Travel Report -->
+    <record id="view_travel_report_search" model="ir.ui.view">
+        <field name="name">travel.report.search</field>
+        <field name="model">travel.report</field>
+        <field name="arch" type="xml">
+            <search string="Search Reports">
+                <field name="report_type"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for Travel Report -->
+    <record id="action_travel_report" model="ir.actions.act_window">
+        <field name="name">Travel Reports</field>
+        <field name="res_model">travel.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Generate and manage travel reports.
+            </p>
+        </field>
+    </record>
+
+</odoo>

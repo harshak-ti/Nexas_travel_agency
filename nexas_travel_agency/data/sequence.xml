@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="seq_travel_trip" model="ir.sequence">
+        <field name="name">Trip Reference</field>
+        <field name="code">travel.trip</field>
+        <field name="prefix">TP</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_travel_booking" model="ir.sequence">
+        <field name="name">Booking Reference</field>
+        <field name="code">travel.booking</field>
+        <field name="prefix">BK</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="seq_travel_itinerary" model="ir.sequence">
+        <field name="name">Itinerary Reference</field>
+        <field name="code">travel.itinerary</field>
+        <field name="prefix">IT</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

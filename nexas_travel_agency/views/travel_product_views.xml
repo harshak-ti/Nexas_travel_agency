@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   
+    <!-- Tree View for Travel Product -->
+    <record id="view_travel_product_tree" model="ir.ui.view">
+        <field name="name">travel.product.tree</field>
+        <field name="model">travel.product</field>
+        <field name="arch" type="xml" >
+            <tree string="Travel Product" editable="top" >
+                <field name="trip_id"/>
+                <field name="product_id" />
+                <field name="qty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_travel_product_kanban" model="ir.ui.view">
+        <field name="name">travel.product.kanban</field>
+        <field name="model">travel.product</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click o_kanban_record">
+                            <div class="o_kanban_record_body">
+                                <div class="o_kanban_record_title">
+                                    <strong><field name="trip_id"/></strong>
+                                </div>
+                                <div class="o_kanban_record_partner">
+                                    <field name="product_id"/>
+                                </div>
+                                <div class="o_kanban_record_amount">
+                                    <span><field name="qty"/></span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+
+    <!-- Action for Travel Product -->
+    <record id="action_travel_product" model="ir.actions.act_window">
+        <field name="name">Travel Product</field>
+        <field name="res_model">travel.product</field>
+        <field name="view_mode">tree,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first travel product
+            </p>
+        </field>
+    </record>
+
+</odoo>

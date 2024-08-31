@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate='1'>
+        <record id="trip_3" model="travel.trip">
+            <field name="name">Nepal Trip</field>
+            <field name="start_date">2023-10-10</field>
+            <field name="end_date">2023-10-10</field>
+            <field name="destination">Nepal</field>
+        </record>
+    </data>
+</odoo>

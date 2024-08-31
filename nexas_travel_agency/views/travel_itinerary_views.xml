@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View for Travel Booking -->
+    <record id="view_travel_itinerary_form" model="ir.ui.view">
+        <field name="name">travel.itinerary.form</field>
+        <field name="model">travel.itinerary</field>
+        <field name="arch" type="xml">
+            <form string="Travel Booking">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference"/>
+                            <field name="trip_id"/>
+                            <field name="day" />
+                            <field name="description" />
+                        </group>
+                        <group>
+                            <field name="location" />
+                        </group>
+                    </group>
+                </sheet>
+
+                 <!-- Chatter -->
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Travel Booking -->
+    <record id="view_travel_itinerary_tree" model="ir.ui.view">
+        <field name="name">travel.itinerary.tree</field>
+        <field name="model">travel.itinerary</field>
+        <field name="arch" type="xml" >
+            <tree string="Travel itinerary" editable="bottom" >
+                <field name="reference"/>
+                <field name="trip_id"   />
+                <field name="day" />
+                <field name="description" />
+                <field name="location"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Travel Booking -->
+    <record id="action_travel_itinerary" model="ir.actions.act_window">
+        <field name="name">Travel itinerary</field>
+        <field name="res_model">travel.itinerary</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first travel itinerary
+            </p>
+        </field>
+    </record>
+
+</odoo>

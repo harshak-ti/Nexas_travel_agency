@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_travel_trip_owner,access.travel.trip,model_travel_trip,nexas_travel_agency.group_travel_agency_owner,1,1,1,1
+access_travel_trip_user,access.travel.trip.user,model_travel_trip,nexas_travel_agency.group_travel_agency_user,1,0,1,0
+access_travel_booking_owner,access.travel.booking,model_travel_booking,nexas_travel_agency.group_travel_agency_owner,1,1,1,1
+access_travel_booking_user,access.travel.booking,model_travel_booking,nexas_travel_agency.group_travel_agency_user,1,0,1,0
+access_travel_itinerary_owner,access.travel.itinerary.user,model_travel_itinerary,nexas_travel_agency.group_travel_agency_owner,1,1,1,1
+access_travel_itinerary_user,access.travel.itinerary.user,model_travel_itinerary,nexas_travel_agency.group_travel_agency_user,1,0,1,0
+access_travel_product,access.travel.product.user,model_travel_product,base.group_user,1,1,1,1
+access_travel_document,access.travel.document.user,model_travel_document,base.group_user,1,1,1,1
+access_travel_supplier,access.travel.supplier.user,model_travel_supplier,base.group_user,1,1,1,1
+access_travel_report,access.travel.report.user,model_travel_report,base.group_user,1,1,1,1
+access_travel_agency,access.travel.agency.user,model_travel_agency,base.group_user,1,1,1,1

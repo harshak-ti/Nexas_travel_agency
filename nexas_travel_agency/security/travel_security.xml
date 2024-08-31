@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="group_travel_agency_owner" model="res.groups">
+        <field name="name">Travel Agency Owner</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="group_travel_agency_user" model="res.groups">
+        <field name="name">Travel Agency User</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Form View for Travel Trip -->
+    <record id="view_travel_trip_form" model="ir.ui.view">
+        <field name="name">travel.trip.form</field>
+        <field name="model">travel.trip</field>
+        <field name="arch" type="xml">
+            <form string="Travel Trip">
+                <sheet>
+                    <group >
+                        <group>
+                            <field name="reference" readonly="True"></field>
+                            <field name="name"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="destination"/>
+                        </group>
+                        <group>
+                            <field name="total_qty"></field>
+                        </group>
+                        
+                    </group>
+                
+                    <notebook>
+                        <page name="booking_ids" string="Bookings">
+                            <field name="booking_ids">
+                                <tree editable="bottom"  >
+                                    <field name="booking_date"/>
+                                    <field name="customer_id"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page name="itinerary_ids" string="Itineray">
+                            <field name="itinerary_ids">
+                                <tree editable="bottom" >
+                                    <field name="day"  />
+                                    <field name="description" />
+                                    <field name="location"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="products_ids" string="Products">
+                            <field name="products_ids">
+                                <tree  editable="bottom" >
+                                    <field name="product_id" />
+                                    <field name="qty"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                
+                </sheet>
+              
+                
+                 <!-- Chatter -->
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Travel Trip -->
+    <record id="view_travel_trip_tree" model="ir.ui.view">
+        <field name="name">travel.trip.tree</field>
+        <field name="model">travel.trip</field>
+        <field name="arch" type="xml">
+            <tree string="Travel Trips">
+                <field name="reference"></field>
+                <field name="name" />
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="destination"/>
+                <field name="booking_ids" widget="many2many_tags" />
+                <field name="itinerary_ids" widget="many2many_tags" />
+                <field name="products_ids" widget="many2many_tags" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tree View for Travel Trip -->
+    <record id="view_travel_trip_kanban" model="ir.ui.view">
+        <field name="name">travel.trip.kanban</field>
+        <field name="model">travel.trip</field>
+        <field name="arch" type="xml">
+            
+                    <kanban>
+                       
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div t-attf-class="oe_kanban_card oe_kanban_global_click o_kanban_record">
+                                    <div id="codepen"> 
+                                        <div class="w-[200px] shadow-lg rounded-lg bg-neutral-50 p-4">
+                                          <img src="https://img.etimg.com/thumb/width-1200,height-1200,imgsize-201359,resizemode-75,msid-65975117/magazines/panache/travel-in-a-clique-be-sane-4-point-guide-to-organise-a-big-group-trip.jpg" alt="Product Image" class="w-full h-[200px] object-cover rounded-md"/>
+                                          <div class="mt-4">
+                                            <h2 class="font-title text-lg font-semibold"><field name="reference"/></h2>
+                                            <p class="mt-2 text-sm text-neutral-700"><field name="name" />
+                                               </p>
+                                          </div>
+                                          <div class="mt-4 flex justify-between items-center">
+                                            <span class="text-lg font-semibold"><field name="destination"/></span>
+                                            <button class="bg-primary rounded-md text-white py-2 px-4"></button>
+                                          </div>
+                                          <div class="mt-4 flex flex-column items-center">
+                                            <button class="date">
+                                              <span class="">  <field name="start_date"/></span>
+                                            </button>
+                                            <button class="date">
+                                              <span class=""><field name="end_date"/></span>
+                                            </button>
+                                          </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </t>
+                        </templates>
+                    </kanban>
+                
+        </field>
+    </record>
+
+  
+
+    <!-- Action for Travel Trip -->
+    <record id="action_travel_trip" model="ir.actions.act_window">
+        <field name="name">Travel Trips</field>
+        <field name="res_model">travel.trip</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first travel trip
+            </p>
+        </field>
+    </record>
+
+    
+</odoo>

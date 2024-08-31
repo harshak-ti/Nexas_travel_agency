@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form View for Travel Supplier -->
+    <record id="view_travel_supplier_form" model="ir.ui.view">
+        <field name="name">travel.supplier.form</field>
+        <field name="model">travel.supplier</field>
+        <field name="arch" type="xml">
+            <form string="Travel Supplier">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="contact_info"/>
+                        <field name="services_provided"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Travel Supplier -->
+    <record id="view_travel_supplier_tree" model="ir.ui.view">
+        <field name="name">travel.supplier.tree</field>
+        <field name="model">travel.supplier</field>
+        <field name="arch" type="xml">
+            <tree string="Travel Suppliers">
+                <field name="name"/>
+                <field name="contact_info"/>
+                <field name="services_provided"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View for Travel Supplier -->
+    <record id="view_travel_supplier_search" model="ir.ui.view">
+        <field name="name">travel.supplier.search</field>
+        <field name="model">travel.supplier</field>
+        <field name="arch" type="xml">
+            <search string="Search Suppliers">
+                <field name="name"/>
+                <field name="contact_info"/>
+                <field name="services_provided"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for Travel Supplier -->
+    <record id="action_travel_supplier" model="ir.actions.act_window">
+        <field name="name">Travel Suppliers</field>
+        <field name="res_model">travel.supplier</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first travel supplier
+            </p>
+        </field>
+    </record>
+
+</odoo>
