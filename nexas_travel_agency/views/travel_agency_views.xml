@@ -56,18 +56,22 @@
         <field name="model">travel.agency</field>
         <field name="arch" type="xml">
             <kanban>
+                <field name="name"/>
+                <field name="date_of_opening"/>
+                <field name="opening_time"/>
+                <field name="closing_time"/>
+                <field name="agency_type"/>
+                <field name="verified"/>
+                <field name="currency_id"/>
+                <field name="tax_amount"/>
+                <field name="owner_image"/>
                 <templates>
                     <t t-name="kanban-box">
                         
                             <div t-attf-class="border-black d-flex align-items-center justify-content-between kanban_section" >
-                                <t t-if="record.owner_image">
-                                    <img t-att-src="'data:image/png;base64,%s' % record.owner_image" 
-                                         class="kanban_img"/>
-                                </t>
-                                <t t-else="">
-                                    <!-- Default image if owner_image is not defined -->
-                                    <img src="https://img.freepik.com/premium-vector/online-travel-ticket-store-through-transportation-journey-booking-hand-drawn-illustration_2175-10339.jpg" class="kanban_img"/>
-                                </t>
+                                <img alt="Owner Image" t-att-src="kanban_image('travel.agency', 'owner_image', record.id.raw_value)" class="kanban_img"/>
+                                
+                                
                                 <div class="kanban_content" >
                                     
                                         <field name="name" class="kanban_content_title" ></field>
