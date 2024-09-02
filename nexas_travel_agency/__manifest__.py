@@ -23,7 +23,11 @@
     ],
     "assets":{
         'web.assets_backend':[
-            "nexas_travel_agency/static/src/css/custom_styles.css"
+        #   "nexas_travel_agency/static/src/js/main.js",
+            "nexas_travel_agency/static/src/css/custom_styles.css",
+          'nexas_travel_agency/static/src/css/trip_view.css',
+        ],
+        'web.assets_frontend': [
         ],
     },
     'license': 'LGPL-3',

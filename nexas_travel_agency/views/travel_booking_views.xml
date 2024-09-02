@@ -46,11 +46,77 @@
         </field>
     </record>
 
+    <record id="view_travel_booking_kanban" model="ir.ui.view">
+        <field name="name">travel.booking.kanban</field>
+        <field name="model">travel.booking</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box" >
+                    <div  style="flex-direction: row;
+                   
+                    width: 54rem;
+                    max-height: fit-content;
+                    padding: 0;
+                    display: flex;
+                    height: 13rem;
+                    box-shadow: 6px 6px 15px -9px rgba(0, 0, 0, 0.75);
+                  ">
+                        <img src="https://img.freepik.com/premium-vector/online-travel-ticket-store-through-transportation-journey-booking-hand-drawn-illustration_2175-10339.jpg" alt="" class="kanban_img" style="border-radius: 0.8rem;
+                        width: 100%;
+                        height: 9rem;
+                        margin-bottom: 1rem;
+                        margin: auto;"/>
+                        
+                        <div class="kanban_content" style="margin: 0.6rem;gap: 0rem;">
+                            <field name="reference" class="kanban_content_title" style="margin: .8rem 0;font-size: 1rem;"></field>
+                            <field name="trip_id" class="kanban_content_subtitle" style="font-size: 0.8rem;
+  margin-bottom: 0.4rem;text-align: center;"/>
+                            
+                            <p class="kanban_content_date_section" style="font-size: 0.8rem;
+">
+                                <h1 style="font-size: 0.8rem;">Booking Date:</h1>
+                                <field name="booking_date" style="font-size: 0.7rem;"/>
+                            </p>
+                            <div class="kanban_content_footer">
+                                <t t-if="record.status.raw_value == 'pending'">
+                                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6nOI0usYypR7m6rWTeQuhZ39rtmiS5aTsDw&amp;s' width="30" height="30"/>
+                                </t>
+                                <t t-elif="record.status.raw_value=='confirmed'">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/4682/4682662.png" width="30" height="30"/>
+                                </t>
+                                <t t-else="">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/5486/5486207.png" width="30" height="30"/>
+                                </t>
+                                <field name="status" style="font-weight: 400;font-size: 0.8rem;"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="view_travel_booking_search" model="ir.ui.view">
+        <field name="name">travel.booking.search</field>
+        <field name="model">travel.booking</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="trip_id" string="Trip Name"/>
+                <filter name="status" string="Confirmed" domain="[('status', '=', 'confirmed')]"  />
+                <filter name="booking_date" string="Booking Date" context="{'group_by':'booking_date'}"  />
+            </search>
+        </field>
+    </record>
+    
     <!-- Action for Travel Booking -->
     <record id="action_travel_booking" model="ir.actions.act_window">
         <field name="name">Travel Bookings</field>
         <field name="res_model">travel.booking</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form,search</field>
+        <!-- <field name="view_id" ref="view_travel_booking_kanban"/> -->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first travel booking

@@ -11,8 +11,8 @@
                         <group>
                             <field name="name"/>
                             <field name="date_of_opening"/>
-                            <field name="opening_time"/>
-                            <field name="closing_time"/>
+                            <field name="opening_time" widget="time"/>
+                            <field name="closing_time" widget="time"/>
                             <field name="net_worth"/>
                             <field name="total_employess"/>
                             <field name="verified"/>
@@ -33,7 +33,7 @@
     </record>
 
     <record id="view_travel_agency_details_tree" model="ir.ui.view">
-        <field name="name">tarvel.agency.tree</field>
+        <field name="name">travel.agency.tree</field>
         <field name="model">travel.agency</field>
         <field name="arch" type="xml">
             <tree string="Agency Details">
@@ -50,10 +50,68 @@
         </field>
     </record>
 
+
+    <record id="view_travel_agency_details_kanban" model="ir.ui.view">
+        <field name="name">tarvel.agency.kanban</field>
+        <field name="model">travel.agency</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        
+                            <div t-attf-class="border-black d-flex align-items-center justify-content-between kanban_section" >
+                                <t t-if="record.owner_image">
+                                    <img t-att-src="'data:image/png;base64,%s' % record.owner_image" 
+                                         class="kanban_img"/>
+                                </t>
+                                <t t-else="">
+                                    <!-- Default image if owner_image is not defined -->
+                                    <img src="https://img.freepik.com/premium-vector/online-travel-ticket-store-through-transportation-journey-booking-hand-drawn-illustration_2175-10339.jpg" class="kanban_img"/>
+                                </t>
+                                <div class="kanban_content" >
+                                    
+                                        <field name="name" class="kanban_content_title" ></field>
+                                   
+                                        <field name="date_of_opening" class="kanban_content_subtitle"/>
+                                    
+                                    <p class="kanban_content_date_section" >
+                                        <h1>Opening Time:</h1>
+                                        <field name="opening_time"/>
+                                    </p>
+                                    <p class="kanban_content_date_section" >
+                                        <h1>Closing Time:</h1>
+                                        <field name="closing_time" />
+                                    </p>
+                                    <div class="kanban_content_footer">
+                                        <field name="currency_id"></field>
+                                        <field name="tax_amount" style="font-weight: 400;"/>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                       
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_travel_agency_graph" model="ir.ui.view">
+        <field name="name">travel.agency.graph</field>
+        <field name="model">travel.agency</field>
+        <field name="arch" type="xml">
+            <graph string="" sample="True">
+                <field name="name"/>
+                <field name="opening_time" interval="day" string="Opening Time"/>
+                <field name="closing_time" interval="day" string="Closing Time"/>
+            </graph>
+        </field>
+    </record>
+
     <record id="action_travel_agency_details" model="ir.actions.act_window">
         <field name="name">Travel Agency Details</field>
         <field name="res_model">travel.agency</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smilling_face">
                 Write the agency details

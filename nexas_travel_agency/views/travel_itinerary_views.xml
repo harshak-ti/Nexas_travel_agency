@@ -44,11 +44,59 @@
         </field>
     </record>
 
+
+
+    <record id="view_travel_itinerary_kanban" model="ir.ui.view">
+        <field name="name">travel.itinerary.kanban</field>
+        <field name="model">travel.itinerary</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box" >
+                    <div  style="flex-direction: row;
+                   
+                    width: 54rem;
+                    max-height: fit-content;
+                    padding: 0;
+                    display: flex;
+                    height: 13rem;
+                    box-shadow: 6px 6px 15px -9px rgba(0, 0, 0, 0.75);
+                  ">
+                        <img src="https://img.freepik.com/premium-vector/online-travel-ticket-store-through-transportation-journey-booking-hand-drawn-illustration_2175-10339.jpg" alt="" class="kanban_img" style="border-radius: 0.8rem;
+                        width: 100%;
+                        height: 9rem;
+                        margin-bottom: 1rem;
+                        margin: auto;"/>
+                        
+                        <div class="kanban_content" style="margin: 0.6rem;gap: 0rem;width: 63%;">
+                            <field name="reference" class="kanban_content_title" style="margin: .8rem 0;font-size: 1rem;"></field>
+                            <field name="trip_id" class="kanban_content_subtitle" style="font-size: 0.8rem;
+  margin-bottom: 0.4rem;text-align: center;"/>
+                            
+                            <p class="kanban_content_date_section" style="font-size: 0.8rem; padding-right: 1.7rem;
+">
+                                <h1 style="font-size: .9rem;">Day: </h1>
+                                <field name="day" style="font-size: 0.8rem;"/>
+                            </p>
+                            <div class="kanban_content_footer">
+                                <img src="https://st3.depositphotos.com/15640006/35437/v/450/depositphotos_354377732-stock-illustration-map-pointer-icon-flat-style.jpg" width="30" height="30"/>
+                                <field name="location" style="font-weight: 400;"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
     <!-- Action for Travel Booking -->
     <record id="action_travel_itinerary" model="ir.actions.act_window">
         <field name="name">Travel itinerary</field>
         <field name="res_model">travel.itinerary</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <!-- <field name="view_id" ref="view_travel_itinerary_kanban"/> -->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first travel itinerary

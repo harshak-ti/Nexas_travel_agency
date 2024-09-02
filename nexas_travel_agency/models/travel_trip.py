@@ -3,7 +3,7 @@ from odoo import fields,models,api
 class TravelTrip(models.Model):
     _name='travel.trip'
     _description='Travel Trip'
-    _rec_name="reference"
+
     _inherit=['mail.thread']
 
 
@@ -35,7 +35,23 @@ class TravelTrip(models.Model):
     def _compute_total_qty(self):
         for rec in self:
             rec.total_qty=sum(rec.products_ids.mapped('qty'))
-        
+
+    
+    def name_get(self):
+        result = []
+        for trip in self:
+            name = f"[{trip.reference}] {trip.name}"
+            result.append((trip.id, name))
+        return result
+    
+    def name_search(self, name, args=None, operator='ilike', limit=100):
+        args = args or []
+        domain = ['|', ('name', operator, name), ('reference', operator, name)]
+        trips = self.search(domain + args, limit=limit)
+        return trips.name_get()
+    
+    
+
 
 
     

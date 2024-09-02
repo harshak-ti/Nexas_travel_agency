@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    
     <!-- Form View for Travel Trip -->
     <record id="view_travel_trip_form" model="ir.ui.view">
         <field name="name">travel.trip.form</field>
@@ -65,6 +66,7 @@
         </field>
     </record>
 
+
     <!-- Tree View for Travel Trip -->
     <record id="view_travel_trip_tree" model="ir.ui.view">
         <field name="name">travel.trip.tree</field>
@@ -83,54 +85,91 @@
         </field>
     </record>
 
-    <!-- Tree View for Travel Trip -->
+
+    <!-- Kanban View for Travel Trip -->
     <record id="view_travel_trip_kanban" model="ir.ui.view">
         <field name="name">travel.trip.kanban</field>
         <field name="model">travel.trip</field>
         <field name="arch" type="xml">
             
                     <kanban>
-                       
-                        <templates>
-                            <t t-name="kanban-box">
-                                <div t-attf-class="oe_kanban_card oe_kanban_global_click o_kanban_record">
-                                    <div id="codepen"> 
-                                        <div class="w-[200px] shadow-lg rounded-lg bg-neutral-50 p-4">
-                                          <img src="https://img.etimg.com/thumb/width-1200,height-1200,imgsize-201359,resizemode-75,msid-65975117/magazines/panache/travel-in-a-clique-be-sane-4-point-guide-to-organise-a-big-group-trip.jpg" alt="Product Image" class="w-full h-[200px] object-cover rounded-md"/>
-                                          <div class="mt-4">
-                                            <h2 class="font-title text-lg font-semibold"><field name="reference"/></h2>
-                                            <p class="mt-2 text-sm text-neutral-700"><field name="name" />
-                                               </p>
-                                          </div>
-                                          <div class="mt-4 flex justify-between items-center">
-                                            <span class="text-lg font-semibold"><field name="destination"/></span>
-                                            <button class="bg-primary rounded-md text-white py-2 px-4"></button>
-                                          </div>
-                                          <div class="mt-4 flex flex-column items-center">
-                                            <button class="date">
-                                              <span class="">  <field name="start_date"/></span>
-                                            </button>
-                                            <button class="date">
-                                              <span class=""><field name="end_date"/></span>
-                                            </button>
-                                          </div>
-                                        </div> 
+                        <templates >
+                            <t t-name="kanban-box" >
+                                <div t-attf-class="border-black d-flex align-items-center justify-content-between kanban_section" >
+                                        <img src="https://img.etimg.com/thumb/width-1200,height-1200,imgsize-201359,resizemode-75,msid-65975117/magazines/panache/travel-in-a-clique-be-sane-4-point-guide-to-organise-a-big-group-trip.jpg"  alt="" class="kanban_img"/>
+                                        
+                                        <div class="kanban_content" >
+                                            
+                                                <field name="reference" class="kanban_content_title" ></field>
+                                           
+                                                <field name="name" class="kanban_content_subtitle"/>
+                                            
+                                            <p class="kanban_content_date_section" >
+                                                <h1>Start Date:</h1>
+                                                <field name="start_date"/>
+                                            </p>
+                                            <p class="kanban_content_date_section" >
+                                                <h1>End Date:</h1>
+                                                <field name="end_date" />
+                                            </p>
+                                            <div class="kanban_content_footer">
+                                                <img src="https://st3.depositphotos.com/15640006/35437/v/450/depositphotos_354377732-stock-illustration-map-pointer-icon-flat-style.jpg" width="40" height="40"/>
+                                                <field name="destination" style="font-weight: 400;"/>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                            
                             </t>
                         </templates>
                     </kanban>
-                
         </field>
     </record>
 
-  
+
+    <!-- Calender View for Travel Trip -->
+    <record id="view_calendar_trip" model="ir.ui.view">
+        <field name="name">travel.trip.calendar</field>
+        <field name="model">travel.trip</field>
+        <field name="arch" type="xml">
+            <calendar string="Trip Calendar"
+                      date_start="start_date"
+                      >
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="destination"/>
+            </calendar>
+        </field>
+    </record>
+
+
+    <!-- Search View for Travel Trip -->
+    <record id="view_travel_trip_search" model="ir.ui.view">
+        <field name="name">travel.trip.search</field>
+        <field name="model">travel.trip</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Trip Name"/>
+                <field name="destination" string="Destination"/>
+                <separator/>
+                
+                
+                <group>
+                    <filter name="name" string="Jaipur Trip" domain="[('name', '=', 'Jaipur Trip')]"/>
+                    <filter name="name" string="Manali Trip" domain="[('name', '=', 'Manali Trip')]"/>
+                </group>
+
+                <filter name="name" string="Trip Name"  context="{'group_by': 'name'}" />
+            
+            </search>
+        </field>
+    </record>
+    
 
     <!-- Action for Travel Trip -->
     <record id="action_travel_trip" model="ir.actions.act_window">
         <field name="name">Travel Trips</field>
         <field name="res_model">travel.trip</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form,kanban,calendar,search</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first travel trip
