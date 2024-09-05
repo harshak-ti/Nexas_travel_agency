@@ -8,7 +8,7 @@ class TravelItinerary(models.Model):
 
 
     reference=fields.Char(string='Itinerary Reference',default='New')
-    trip_id = fields.Many2one('travel.trip', string='Trip', required=True)
+    trip_id = fields.Many2one('travel.trip', string='Trip', required=True,ondelete='cascade')
     day = fields.Integer(string='Day Number', required=True)
     description = fields.Text(string='Description')
     location = fields.Char(string='Location', required=True)

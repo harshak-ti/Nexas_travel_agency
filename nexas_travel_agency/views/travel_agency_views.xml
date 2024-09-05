@@ -23,7 +23,7 @@
                         <group>
                             <field name="description"/>
                             <field name="document"/>
-                            <field name="description_html"/>
+                            <field name="description_html" widget="html"/>
                             <field name="owner_image" widget="image"/>
                         </group>
                     </group>
@@ -46,6 +46,7 @@
                 <field name="currency_id"/>
                 <field name="tax_amount"/>
                 <field name="owner_image"/>
+               
             </tree>
         </field>
     </record>
@@ -92,7 +93,42 @@
                                     </div>
                                 </div>
                             </div>
-                    
+
+<!--                            
+                            <div class="card" style="border: 1px solid #000; display: flex; padding: 20px; box-sizing: border-box;display:flex;flex-direction:row;">
+                                <div class="left-section" style=" border-right: 2px dotted #0077b6; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-right: 20px; box-sizing: border-box;">
+                                    <div class="arrow" style=" color: #0077b6;"><img src="https://png.pngtree.com/png-clipart/20201106/ourmid/pngtree-gray-blue-arrow-clip-art-png-image_2396288.jpg" width="20" height="20"></img></div>
+                                    <div class="text" style="writing-mode: vertical-rl; text-orientation: mixed; color: #e63946;  margin-top: 20px;">PLAN YOUR GETAWAY THE EASY WAY</div>
+                                    <div class="arrow" style=" color: #0077b6;"><img src="https://png.pngtree.com/png-clipart/20201106/ourmid/pngtree-gray-blue-arrow-clip-art-png-image_2396288.jpg" width="20" height="20"></img></div>
+                                </div>
+                                <div class="right-section" style=" display: flex; flex-direction: column; justify-content: space-between; padding-left: 20px; box-sizing: border-box;">
+                                    <div class="header" style="display: flex; flex-direction: column;">
+                                        <div class="title" style="font-family: 'Brush Script MT', cursive;  color: #0077b6; margin: 0;">Borcelle Travels</div>
+                                        <div class="subtitle" style=" color: #e63946; margin: 0;">FULL SERVICE TRAVEL AGENCY</div>
+                                    </div>
+                                    <div class="info" style="display: flex; flex-direction: column;">
+                                        <div class="name" style=" color: #0077b6; margin: 0;">ESTELLE DARCY</div>
+                                        <div class="position" style="color: #e63946; margin: 0;">FOUNDER</div>
+                                        <div class="contact" style="display: flex; flex-direction: column; margin-top: 10px;">
+                                            <div class="item" style="display: flex; align-items: center;  color: #0077b6; margin: 5px 0;"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>123 Anywhere St., Any City</div>
+                                            <div class="item" style="display: flex; align-items: center; color: #0077b6; margin: 5px 0;"><i class="fas fa-phone-alt" style="margin-right: 10px;"></i>+123-456-7890</div>
+                                            <div class="item" style="display: flex; align-items: center;  color: #0077b6; margin: 5px 0;"><i class="fas fa-envelope" style="margin-right: 10px;"></i>hello@reallygreatsite.com</div>
+                                        </div>
+                                    </div>
+                              </div>
+                                   
+                                 <div class="barcode">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSraNIPQn7h7tntj_wbM810mOgb8JG0uSAn6E3G9S79buRuPqFpwiNGiRyM03ed2XQAhqg&amp;usqp=CAU" />
+                                 </div>
+                              
+                                  <div class="barcode-section" style="display: flex;flex-direction:column; justify-content: space-between; align-items: center;">
+                                        <div class="plane-icon" style=" color: #0077b6;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSewH1e_hihfedLpJZ3_jbM3-VE7LLbAbC88Q&amp;s" width="40" height="40"></img></div>
+                                        <div class="text" style=" color: #0077b6;">BEST TRAVEL DEALS</div>
+                                    <div class="seat" style="border: 2px solid #0077b6; padding: 10px;  color: #0077b6; text-align: center;">SEAT 10A</div>
+                                    
+                               </div>
+                            </div>
+                     -->
                        
                     </t>
                 </templates>

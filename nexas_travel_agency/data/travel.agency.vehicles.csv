@@ -1,0 +1,6 @@
+id,name,license_plate,model,manufacturer,year_of_manufacture,vehicle_type,color,capacity,status
+vehicle_1,Toyota Corolla,ABC-1234,Corolla,Toyota,2019,car,White,5,available
+vehicle_2,Ford Transit,DEF-5678,Transit,Ford,2018,van,Blue,12,available
+vehicle_3,Honda Civic,GHI-9101,Civic,Honda,2020,car,Red,5,available
+vehicle_4,Kawasaki Ninja,JKL-2345,Ninja,Kawasaki,2021,motorcycle,Green,2,available
+vehicle_5,Mercedes-Benz Actros,MNO-6789,Actros,Mercedes-Benz,2017,bus,Black,30,available

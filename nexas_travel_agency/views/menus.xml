@@ -4,7 +4,8 @@
     <menuitem id="travel_agency_main_menu" 
     name="Travel Agency" 
     sequence="10" 
-    web_icon="nexas_travel_agency,static/description/icon.png"/>
+    web_icon="nexas_travel_agency,static/description/icon.png"
+    groups="base.group_user"/>
 
     <!-- Booking and Reservation Management -->
     <menuitem id="travel_agency_booking_menu" 
@@ -65,6 +66,13 @@
     sequence="50" 
     groups="base.group_user"/>
 
+    <menuitem id="travel_agency_driver_menu" 
+    name="Drivers" 
+    action="action_travel_agency_drivers"
+    parent="travel_agency_people_menu" 
+    sequence="60" 
+    groups="base.group_user"/>
+
     <menuitem id="travel_agency_configure_menu" 
     name="Configure" 
     parent="travel_agency_main_menu"
@@ -90,10 +98,15 @@
     action="action_travel_report" 
     sequence="50"/>
 
-    <menuitem id="tarvel_agency_details_menu_item" 
+    <menuitem id="travel_agency_details_menu_item" 
     name="Agency Details" 
     parent="travel_agency_configure_menu" 
     action="action_travel_agency_details" />
+
+    <menuitem id="travel_agency_vehicles_menu_item" 
+    name="Vehicles Details" 
+    parent="travel_agency_configure_menu" 
+    action="action_travel_agency_vehicles" />
 
     
 </odoo>

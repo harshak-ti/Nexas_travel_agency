@@ -8,7 +8,7 @@ class TravelProduct(models.Model):
 
 
    
-    trip_id = fields.Many2one('travel.trip', string='Trip',required="True")
+    trip_id = fields.Many2one('travel.trip', string='Trip',required="True",ondelete='cascade')
     product_id=fields.Many2one('product.product',string="Products")
     qty=fields.Float(string="Quantity")
 

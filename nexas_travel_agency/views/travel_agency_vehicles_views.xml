@@ -1,0 +1,114 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_travel_agency_vehicles_tree" model="ir.ui.view">
+        <field name="name">travel.agency.vehicles.tree</field>
+        <field name="model">travel.agency.vehicles</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicles">
+                <field name="name"/>
+                <field name="license_plate"/>
+                <field name="model"/>
+                <field name="manufacturer"/>
+                <field name="year_of_manufacture"/>
+                <field name="vehicle_type"/>
+                <field name="capacity"/>
+                <field name="status"/>
+                <field name="driver_id"/>
+                <!-- <field name="image"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_travel_agency_vehicles_form" model="ir.ui.view">
+        <field name="name">travel.agency.vehicles.form</field>
+        <field name="model">travel.agency.vehicles</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="license_plate"/>
+                        <field name="model"/>
+                        <field name="manufacturer"/>
+                        <field name="year_of_manufacture"/>
+                        <field name="vehicle_type"/>
+                        <field name="capacity"/>
+                        <field name="color"/>
+                        <field name="status"/>
+                        <!-- <field name="image" widget="image"/> -->
+                        <field name="driver_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_travel_agency_vehicles_kanban" model="ir.ui.view">
+        <field name="name">travel.agency.vehicles.kanban</field>
+        <field name="model">travel.agency.vehicles</field>
+        <field name="arch" type="xml">
+            <kanban string="Vehicles">
+                <templates>
+                    <t t-name="kanban-box">
+
+                        <div t-attf-class="border-black d-flex align-items-center justify-content-between kanban_section" >
+                            <img src="https://cdn.pixabay.com/photo/2023/10/15/02/20/car-8316057_640.png"  alt="" class="kanban_img"/>
+                            
+                            <div class="kanban_content" >
+                                
+                                    <field name="name" class="kanban_content_title" ></field>
+                               
+                                    <field name="license_plate" class="kanban_content_subtitle"/>
+                                
+                                <p class="kanban_content_date_section" >
+                                    <h1>Model:</h1>
+                                    <field name="model"/>
+                                </p>
+                                <p class="kanban_content_date_section" >
+                                    <h1><field name="manufacturer" />:</h1>
+                                    <field name="vehicle_type" />
+                                
+                                </p>
+                                <div class="kanban_content_footer">
+                                    <field name="driver_id" style="font-weight: 400;"/>
+                                    <img src="https://st4.depositphotos.com/17797916/20051/v/450/depositphotos_200517708-stock-illustration-automotive-professional-logo-icon-design.jpg" width="40" height="40"/>
+                                    <field name="status" style="font-weight: 400;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_travel_agency_vehicles_search" model="ir.ui.view">
+        <field name="name">travel.agency.vehicles.search</field>
+        <field name="model">travel.agency.vehicles</field>
+        <field name="arch" type="xml">
+            <search string="Search Vehicles">
+                <field name="name"/>
+                <field name="license_plate"/>
+                <field name="model"/>
+                <field name="manufacturer"/>
+                <field name="year_of_manufacture"/>
+                <field name="vehicle_type"/>
+                <field name="status"/>
+                <!-- <filter string="Available Vehicles" domain="[('status', '=', 'available')]"/> -->
+            </search>
+        </field>
+    </record>
+
+    <record id="action_travel_agency_vehicles" model="ir.actions.act_window">
+        <field name="name">travel.agency.vehicles.action</field>
+        <field name="res_model">travel.agency.vehicles</field>
+        <field name="view_mode">tree,form,kanban,search</field>
+        <field name="view_id" ref="view_travel_agency_vehicles_kanban" />
+        <field name="help" type="html">
+            <p>Create the new Driver Details</p>
+        </field>
+    </record>
+</odoo>

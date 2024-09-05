@@ -1,0 +1,9 @@
+<templates>
+    <t t-extend="ListView.buttons" t-name="CustomView.buttons">
+        <xpath expr="//div[contains(@class, 'o_cp_buttons')]" position="inside">
+            <button type="button" class="btn btn-secondary o_button_custom_action">
+                Custom Action
+            </button>
+        </xpath>
+    </t>
+</templates>

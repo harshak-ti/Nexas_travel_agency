@@ -3,7 +3,7 @@
     "author":"Target Integration",
     "description":"This is a travel agency management system",
     'version': '17.0.1.1',
-    'depends': ['base','account','mail','product'],
+    'depends': ['base','account','mail','product','web'],
     'data':[
         "security/travel_security.xml",
         "security/ir.model.access.csv",
@@ -16,14 +16,21 @@
         "views/travel_supplier_views.xml",
         "views/travel_product_views.xml",
         "views/travel_agency_views.xml",
+        "views/travel_agency_driver_view.xml",
+        "views/travel_agency_vehicles_views.xml",
         "views/menus.xml",
-        "data/travel.trip.csv",
-        "data/travel_trip_data.xml"
+        "data/travel_trip_data.xml",
+        "data/travel_agency_vehicles.xml",
+        "data/travel_agency_drivers.xml"
+       
         
     ],
     "assets":{
         'web.assets_backend':[
-        #   "nexas_travel_agency/static/src/js/main.js",
+            "static/src/js/demo.js",
+            "static/src/js/custom_button.js",
+      "static/src/js/confirm_booking.js",
+      "static/src/xml/demo.xml",
             "nexas_travel_agency/static/src/css/custom_styles.css",
           'nexas_travel_agency/static/src/css/trip_view.css',
         ],
