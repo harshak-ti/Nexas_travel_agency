@@ -3,7 +3,7 @@
     "author":"Target Integration",
     "description":"This is a travel agency management system",
     'version': '17.0.1.1',
-    'depends': ['base','account','mail','product','web'],
+    'depends': ['base','account','mail','product','web','sale'],
     'data':[
         "security/travel_security.xml",
         "security/ir.model.access.csv",
@@ -18,6 +18,8 @@
         "views/travel_agency_views.xml",
         "views/travel_agency_driver_view.xml",
         "views/travel_agency_vehicles_views.xml",
+        "views/res_partner_views.xml",
+        "views/sale_order_inherit_views.xml",
         "views/menus.xml",
         "data/travel_trip_data.xml",
         "data/travel_agency_vehicles.xml",

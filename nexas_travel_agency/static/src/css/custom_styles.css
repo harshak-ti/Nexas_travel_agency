@@ -76,7 +76,7 @@
 	margin: .7rem 0;
 
 }
-
+/* 
 .o_form_renderer{
     flex-direction: column !important;
   margin: 2rem;
@@ -107,7 +107,7 @@
 }
 .o_notebook {
     margin-left: 3rem;
-}
+} */
 
 
 .o_form_statusbar{
@@ -144,4 +144,6 @@
   } */
 
 
-  
+  /* .o_kanban_renderer.o_kanban_ungrouped .o_kanban_record{
+    width: auto !important;
+  } */

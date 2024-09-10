@@ -111,41 +111,40 @@ class TravelTrip(models.Model):
 
         return True  
     
-    # def view_record_action(self):
-    #     records=self.search([])
-    #     # records=self.browse(records_ids)
-    #     _l.info(f"Displaying self: {self}")
-    #     for rec in records:
-    #         _l.info(f"Display the record : {rec.name}")
-    #         if rec.name=="Jaipur Trip":
-    #                 _l.info(f"Displaying booking ids : ")
-    #                 existing_products=self.env['travel.product'].search([]).ids
-    #                 rec.write({
-    #                         'products_ids':[(4,existing_products[0],0)]
-    #             })
+    def view_record_action(self):
+        records=self.search([])
+        # records=self.browse(records_ids)
+        _l.info(f"Displaying self: {self}")
+        for rec in records:
+            _l.info(f"Display the record : {rec.name}")
+            if rec.name=="Jaipur Trip":
+                    _l.info(f"Displaying booking ids : ")
+                    existing_products=self.env['travel.product'].search([]).ids
+                    rec.write({
+                            'products_ids':[(4,existing_products[0],0)]
+                })
 
-    #     return True  
+        return True  
     
 
-    # def view_record_action(self):
-    #     records=self.search([])
-    #     # records=self.browse(records_ids)
-    #     _l.info(f"Displaying self: {self}")
-    #     for rec in records:
-    #         _l.info(f"Display the record : {rec.name}")
-    #         if rec.name=="Jaipur Trip":
-    #            for booking in rec.booking_ids:
-    #                 _l.info(f"Displaying booking ids : {booking}")
-    #                 if booking.customer_id.id==1 :
-    #                     rec.write({
-    #                         'booking_ids':[(1,booking.id,{
+    def view_record_action(self):
+        records=self.search([])
+        _l.info(f"Displaying self: {self}")
+        for rec in records:
+            _l.info(f"Display the record : {rec.name}")
+            if rec.name=="Jaipur Trip":
+               for booking in rec.booking_ids:
+                    _l.info(f"Displaying booking ids : {booking}")
+                    if booking.customer_id.id==1 :
+                        rec.write({
+                            'booking_ids':[(1,booking.id,{
                                
-    #                             'status':'confirmed'
+                                'status':'confirmed'
 
-    #                         })]
-    #             })
+                            })]
+                })
 
-    #     return True  
+        return True  
 
 
     

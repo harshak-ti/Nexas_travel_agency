@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_partner_form_inherit_travel" model="ir.ui.view">
+        <field name="name">res.partner.form.travel.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+
+            <notebook position="after">
+                <button name="custom_create_btn" type="object" string="Save" style="background-color: black !important; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;"></button>
+            </notebook>
+            <group >
+
+                <xpath style="width:100%" expr="//field[@name='email']" position="after">
+                    <field name="preferences" string='Preferences'/>
+                </xpath>
+
+
+
+            </group>
+            <xpath style="width:100%" expr="//field[@name='preferences']" position="after">
+                <group position="after">
+                    <field name="travel_history_ids">
+                        <tree readonly="1">
+                            <field name="trip_id"/>
+                            <field name="booking_date"/>
+                            <field name="status"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+
+            <field name="phone" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+
+
+
+        </field>
+    </record>
+    <!-- <record id="view_partner_tree_inherit_travel" model="ir.ui.view">
+            <field name="name">res.partner.tree.travel.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+            
+                    
+                <xpath expr="//div[@class='o_control_panel']" position="inside">
+                        <button name="custom_create_btn" type="object" string="Save" style="background-color: black !important; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;"></button>
+                    </xpath>
+                    
+                    
+            
+                
+            </field>
+        </record> -->
+</odoo>
+    
