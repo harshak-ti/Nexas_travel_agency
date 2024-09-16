@@ -7,9 +7,9 @@
         <field name="arch" type="xml">
             <form string="Travel Booking">
                 <header>
-                   
-                    <button name="action_confirm" type="object" string="Confirm"  invisible="status !='pending'" class="status"/>
-                    <button name="action_cancel" type="object" string="Cancel" invisible="status != 'pending'" ></button>
+
+                    <button name="action_confirm" type="object" string="Confirm" invisible="status !='pending'" class="status"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="status != 'pending'"></button>
                     <field name="status" widget="statusbar" statusbar_visible="pending,confirmed" class='btn-success'></field>
                 </header>
                 <sheet>
@@ -17,10 +17,24 @@
                         <field name="trip_id"/>
                         <field name="booking_date"/>
                         <field name="customer_id"/>
+                        <notebook>
+                            <page string="Trips">
+                                <field name="trip_ids">
+
+                                    <tree editable="bottom">
+                                        <field name="reference"></field>
+                                        <field name="name" />
+                                        <field name="start_date"/>
+                                        <field name="end_date"/>
+                                        <field name="destination"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                     </group>
                     <group>
                         <!-- <field name="payment_id" widget="many2many_tags"/> -->
-                    </group>    
+                    </group>
                 </sheet>
 
                 <!-- Chatter -->
@@ -33,11 +47,11 @@
     </record>
 
     <!-- Tree View for Travel Booking -->
-    <record id="view_travel_booking_tree" model="ir.ui.view" >
+    <record id="view_travel_booking_tree" model="ir.ui.view">
         <field name="name">travel.booking.tree</field>
         <field name="model">travel.booking</field>
         <field name="arch" type="xml">
-            <tree string="Travel Bookings" >
+            <tree string="Travel Bookings">
                 <field name="reference" group="group_travel_agency_user"></field>
                 <field name="trip_id"/>
                 <field name="booking_date"/>
@@ -48,15 +62,15 @@
     </record>
 
 
-  
+
     <record id="view_travel_booking_kanban" model="ir.ui.view">
         <field name="name">travel.booking.kanban</field>
         <field name="model">travel.booking</field>
         <field name="arch" type="xml">
             <kanban>
                 <templates>
-                    <t t-name="kanban-box" >
-                    <div  style="flex-direction: row;
+                    <t t-name="kanban-box">
+                        <div style="flex-direction: row;
                    
                     width: 54rem;
                     max-height: fit-content;
@@ -65,37 +79,37 @@
                     height: 13rem;
                     box-shadow: 6px 6px 15px -9px rgba(0, 0, 0, 0.75);
                   ">
-                        <img src="https://img.freepik.com/premium-vector/online-travel-ticket-store-through-transportation-journey-booking-hand-drawn-illustration_2175-10339.jpg" alt="" class="kanban_img" style="border-radius: 0.8rem;
+                            <img src="https://img.freepik.com/premium-vector/online-travel-ticket-store-through-transportation-journey-booking-hand-drawn-illustration_2175-10339.jpg" alt="" class="kanban_img" style="border-radius: 0.8rem;
                         width: 100%;
                         height: 9rem;
                         margin-bottom: 1rem;
                         margin: auto;"/>
-                        
-                        <div class="kanban_content" style="margin: 0.6rem;gap: 0rem;">
-                            <field name="reference" class="kanban_content_title" style="margin: .8rem 0;font-size: 1rem;"></field>
-                            <field name="trip_id" class="kanban_content_subtitle" style="font-size: 0.8rem;
+
+                            <div class="kanban_content" style="margin: 0.6rem;gap: 0rem;">
+                                <field name="reference" class="kanban_content_title" style="margin: .8rem 0;font-size: 1rem;"></field>
+                                <field name="trip_id" class="kanban_content_subtitle" style="font-size: 0.8rem;
   margin-bottom: 0.4rem;text-align: center;"/>
-                            
-                            <p class="kanban_content_date_section" style="font-size: 0.8rem;
+
+                                <p class="kanban_content_date_section" style="font-size: 0.8rem;
 ">
-                                <h1 style="font-size: 0.8rem;">Booking Date:</h1>
-                                <field name="booking_date" style="font-size: 0.7rem;"/>
-                            </p>
-                            <div class="kanban_content_footer">
-                                <t t-if="record.status.raw_value == 'pending'">
-                                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6nOI0usYypR7m6rWTeQuhZ39rtmiS5aTsDw&amp;s' width="30" height="30"/>
-                                </t>
-                                <t t-elif="record.status.raw_value=='confirmed'">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/4682/4682662.png" width="30" height="30"/>
-                                </t>
-                                <t t-else="">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/5486/5486207.png" width="30" height="30"/>
-                                </t>
-                                <field name="status" style="font-weight: 400;font-size: 0.8rem;"/>
+                                    <h1 style="font-size: 0.8rem;">Booking Date:</h1>
+                                    <field name="booking_date" style="font-size: 0.7rem;"/>
+                                </p>
+                                <div class="kanban_content_footer">
+                                    <t t-if="record.status.raw_value == 'pending'">
+                                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6nOI0usYypR7m6rWTeQuhZ39rtmiS5aTsDw&amp;s' width="30" height="30"/>
+                                    </t>
+                                    <t t-elif="record.status.raw_value=='confirmed'">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/4682/4682662.png" width="30" height="30"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/5486/5486207.png" width="30" height="30"/>
+                                    </t>
+                                    <field name="status" style="font-weight: 400;font-size: 0.8rem;"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </t>
+                    </t>
                 </templates>
             </kanban>
         </field>
@@ -108,12 +122,12 @@
         <field name="arch" type="xml">
             <search string="">
                 <field name="trip_id" string="Trip Name"/>
-                <filter name="status" string="Confirmed" domain="[('status', '=', 'confirmed')]"  />
-                <filter name="booking_date" string="Booking Date" context="{'group_by':'booking_date'}"  />
+                <filter name="status" string="Confirmed" domain="[('status', '=', 'confirmed')]" />
+                <filter name="booking_date" string="Booking Date" context="{'group_by':'booking_date'}" />
             </search>
         </field>
     </record>
-    
+
     <!-- Action for Travel Booking -->
     <record id="action_travel_booking" model="ir.actions.act_window">
         <field name="name">Travel Bookings</field>

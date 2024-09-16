@@ -1,0 +1,137 @@
+<odoo>
+
+    <template id="report_travel_trip">
+
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <div style="background-color: #00aaff; color: #ffffff; padding: 20px; text-align: center; position: relative;">
+                            <h1 style="margin: 0; font-size: 36px;">
+                                <span>
+                                            TRIP
+                                </span>
+                                <span>
+                                            STATUS
+                                </span>
+                                <span>
+                                            REPORT
+                                </span>
+                            </h1>
+                            <img alt="Abstract design" height="100" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-BVbpSZmLndA7MfHIxv2ahIKS/user-IBY8IaMXtVn7IVIdZeyvjx16/img-fbTPXiSy1SHGSUpJjMzgAd4n.png?st=2024-09-11T12%3A13%3A23Z&amp;se=2024-09-11T14%3A13%3A23Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-10T23%3A14%3A57Z&amp;ske=2024-09-11T23%3A14%3A57Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=12188tMlWOZloLM/77DS6hIQnEgXJNB2Fm09VFEXTr8%3D" style="position: absolute; top: 0; right: 0; height: 100%; width: 100px;"/>
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #e0f7ff; font-weight: bold;">
+                                    <span t-field="o.reference"></span>
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd;">
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #e0f7ff;">
+      Trip Period
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #e0f7ff; font-weight: bold;">
+                                    <span t-field="o.name"/>
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd;">
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #e0f7ff;">
+                                    <span t-field="o.start_date"/>
+ -                                    <span t-field="o.end_date"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #e0f7ff; font-weight: bold;">
+      Destination - <span t-field="o.destination"/>
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd;">
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #e0f7ff;">
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="background-color: #003366; color: #ffffff; padding: 10px; margin: 20px 0 10px; font-size: 18px;">
+    HIGHLIGHTS
+                        </div>
+                        <div style="padding-left: 20px;">
+                            <ul style="list-style-type: disc;">
+                                <li style="margin: 5px 0;">
+      List the main achievements during the reporting period
+                                </li>
+                                <li style="margin: 5px 0;">
+      When possible, add details like supporting quantitative data
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="background-color: #003366; color: #ffffff; padding: 10px; margin: 20px 0 10px; font-size: 18px;">
+    CHALLENGES
+                        </div>
+                        <div style="padding-left: 20px;">
+                            <ul style="list-style-type: disc;">
+                                <li style="margin: 5px 0;">
+      Flag any blockers that occurred in the same period
+                                </li>
+                                <li style="margin: 5px 0;">
+      Indicate whether they have been resolved or are still pending action
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="background-color: #003366; color: #ffffff; padding: 10px; margin: 20px 0 10px; font-size: 18px;">
+    Bookings
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                            <tr>
+                                <th style="padding: 10px; border: 1px solid #dddddd; background-color: #003366; color: #ffffff;">
+      Booking Id
+                                </th>
+                                <th style="padding: 10px; border: 1px solid #dddddd; background-color: #003366; color: #ffffff;">
+      Customer 
+                                </th>
+                                <th style="padding: 10px; border: 1px solid #dddddd; background-color: #003366; color: #ffffff;">
+      Status
+                                </th>
+                                <th style="padding: 10px; border: 1px solid #dddddd; background-color: #003366; color: #ffffff;">
+      Booking Date
+                                </th>
+                            </tr>
+                            <t t-foreach="o.booking_ids" t-as="bk">
+
+                            </t>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #e0f7ff;">
+                                    <span t-field="bk.reference"/>
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd;">
+                                    <span t-field="bk.customer_id"/>
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #00cc99; color: #ffffff; border-radius: 5px;">
+                                    <span t-field="bk.status"/>
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd;">
+                                    <span t-field="bk.booking_date"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #e0f7ff;">
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd;">
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd; background-color: #00aaff; color: #ffffff; border-radius: 5px;">
+      ONGOING
+                                </td>
+                                <td style="padding: 10px; border: 1px solid #dddddd;">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

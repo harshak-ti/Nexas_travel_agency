@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-    
     <!-- Form View for Travel Trip -->
+
     <record id="view_travel_trip_form" model="ir.ui.view">
         <field name="name">travel.trip.form</field>
         <field name="model">travel.trip</field>
         <field name="arch" type="xml">
             <form string="Travel Trip">
-                
+
                 <sheet>
-                    
+
                     <group >
                         <group>
                             <field name="reference" readonly="True" widget="badge"></field>
@@ -22,14 +21,14 @@
                             <field name="hired_driver" widget="badge"></field>
                             <field name="total_qty"></field>
                         </group>
-                       
-                        
+
+
                     </group>
-                
+
                     <notebook>
                         <page name="booking_ids" string="Bookings">
                             <field name="booking_ids">
-                                <tree editable="bottom"  >
+                                <tree editable="bottom">
                                     <field name="booking_date"/>
                                     <field name="customer_id"/>
                                     <field name="status" widget="badge"/>
@@ -39,42 +38,41 @@
                         </page>
                         <page name="itinerary_ids" string="Itineray">
                             <field name="itinerary_ids">
-                                <tree editable="bottom" >
-                                    <field name="day"  />
-                                    <field name="description"  widget="copy_to_clipboard"/>
+                                <tree editable="bottom">
+                                    <field name="day" />
+                                    <field name="description" widget="copy_to_clipboard"/>
                                     <field name="location"/>
                                 </tree>
                             </field>
                         </page>
                         <page name="products_ids" string="Products">
                             <field name="products_ids">
-                                <tree  editable="bottom" >
+                                <tree editable="bottom">
                                     <field name="product_id" widget="badge" />
                                     <field name="qty"/>
                                 </tree>
                             </field>
                         </page>
                     </notebook>
-                        <div style="display: flex;
+                    <div style="display: flex;
                         align-items: end;
                         margin-left: 2rem;">
 
-                            <button name="action_save_record" string="Save" type="object" class="oe_highlight"  />
-                        </div>
-                    
-               
-                  
+                        <button name="action_save_record" string="Save" type="object" class="oe_highlight" />
+                    </div>
+
+
+
                 </sheet>
-                
-                 <!-- Chatter -->
-                 <div class="oe_chatter">
+
+                <!-- Chatter -->
+                <div class="oe_chatter">
                     <field name="message_follower_ids" groups="base.group_user"/>
                     <field name="message_ids"/>
                 </div>
             </form>
         </field>
     </record>
-
 
     <!-- Tree View for Travel Trip -->
     <record id="view_travel_trip_tree" model="ir.ui.view">
@@ -96,56 +94,56 @@
                 <field name="hired_vehicle"/>
                 <field name="hired_driver"/>
             </tree>
-            
+
         </field>
     </record>
-  
 
-  
+
+
 
     <!-- Kanban View for Travel Trip -->
     <record id="view_travel_trip_kanban" model="ir.ui.view">
         <field name="name">travel.trip.kanban</field>
         <field name="model">travel.trip</field>
         <field name="arch" type="xml">
-            
-                    <kanban>
-                        
-                        <templates >
-                            <t t-attf-style="display: flex;height:10rem;
+
+            <kanban>
+
+                <templates >
+                    <t t-attf-style="display: flex;height:10rem;
                             background:black;width:100%;"></t>
-                            <t t-name="kanban-box" >
-                                <div t-attf-class="border-black d-flex align-items-center justify-content-between kanban_section" >
-                                        <img src="https://img.etimg.com/thumb/width-1200,height-1200,imgsize-201359,resizemode-75,msid-65975117/magazines/panache/travel-in-a-clique-be-sane-4-point-guide-to-organise-a-big-group-trip.jpg"  alt="" class="kanban_img"/>
-                                        
-                                        <div class="kanban_content" >
-                                            
-                                                <field name="reference" class="kanban_content_title" ></field>
-                                           
-                                                <field name="name" class="kanban_content_subtitle"/>
-                                            
-                                            <p class="kanban_content_date_section" >
-                                                <h1>Start Date:</h1>
-                                                <field name="start_date"/>
-                                            </p>
-                                            <p class="kanban_content_date_section" >
-                                                <h1>End Date:</h1>
-                                                <field name="end_date" />
-                                            </p>
-                                            <div class="kanban_content_footer">
-                                                <img src="https://st3.depositphotos.com/15640006/35437/v/450/depositphotos_354377732-stock-illustration-map-pointer-icon-flat-style.jpg" width="40" height="40"/>
-                                                <field name="destination" style="font-weight: 400;"/>
-                                            </div>
-                                            <div style="display: flex; align-items: center; justify-content: center; padding: 1rem;">
-                                                <button class="oe_highlight" string="Prints Records" type="object" name="view_record_action"/>
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
-                            
-                            </t>
-                        </templates>
-                    </kanban>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="border-black d-flex align-items-center justify-content-between kanban_section">
+                            <img src="https://img.etimg.com/thumb/width-1200,height-1200,imgsize-201359,resizemode-75,msid-65975117/magazines/panache/travel-in-a-clique-be-sane-4-point-guide-to-organise-a-big-group-trip.jpg" alt="" class="kanban_img"/>
+
+                            <div class="kanban_content">
+
+                                <field name="reference" class="kanban_content_title"></field>
+
+                                <field name="name" class="kanban_content_subtitle"/>
+
+                                <p class="kanban_content_date_section">
+                                    <h1>Start Date:</h1>
+                                    <field name="start_date"/>
+                                </p>
+                                <p class="kanban_content_date_section">
+                                    <h1>End Date:</h1>
+                                    <field name="end_date" />
+                                </p>
+                                <div class="kanban_content_footer">
+                                    <img src="https://st3.depositphotos.com/15640006/35437/v/450/depositphotos_354377732-stock-illustration-map-pointer-icon-flat-style.jpg" width="40" height="40"/>
+                                    <field name="destination" style="font-weight: 400;"/>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: center; padding: 1rem;">
+                                    <button class="oe_highlight" string="Prints Records" type="object" name="view_record_action"/>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
@@ -155,9 +153,7 @@
         <field name="name">travel.trip.calendar</field>
         <field name="model">travel.trip</field>
         <field name="arch" type="xml">
-            <calendar string="Trip Calendar"
-                      date_start="start_date"
-                      >
+            <calendar string="Trip Calendar" date_start="start_date">
                 <field name="reference"/>
                 <field name="name"/>
                 <field name="destination"/>
@@ -176,25 +172,25 @@
                 <field name="name" string="Trip Name"/>
                 <field name="destination" string="Destination"/>
                 <separator/>
-                
-                
+
+
                 <group>
                     <filter name="name" string="Jaipur Trip" domain="[('name', '=', 'Jaipur Trip')]"/>
                     <filter name="name" string="Manali Trip" domain="[('name', '=', 'Manali Trip')]"/>
                 </group>
 
-                <filter name="name" string="Trip Name"  context="{'group_by': 'name'}" />
-            
+                <filter name="name" string="Trip Name" context="{'group_by': 'name'}" />
+
             </search>
         </field>
     </record>
-    
+
 
     <!-- Action for Travel Trip -->
     <record id="action_travel_trip" model="ir.actions.act_window">
         <field name="name">Travel Trips</field>
         <field name="res_model">travel.trip</field>
-        <field name="view_mode">tree,form,kanban,calendar,search</field>
+        <field name="view_mode">form,kanban,calendar,search</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first travel trip
@@ -202,5 +198,18 @@
         </field>
     </record>
 
-    
+
+    <odoo>
+        <record id="action_travel_trip_report" model="ir.actions.report">
+            <field name="name">Travel Trip Report</field>
+            <field name="model">travel.trip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">nexas_travel_agency.report_travel_trip</field>
+            <field name="print_report_name">"Travel_Trip_%s" % (object.name)</field>
+            <field name="binding_model_id" ref="model_travel_trip"/>
+        </record>
+    </odoo>
+
+
+
 </odoo>

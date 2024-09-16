@@ -17,3 +17,12 @@ class ResPartner(models.Model):
         res=super(ResPartner,self).create(vals)
         res.preferences="Manali,jaipur"
         return res
+    
+
+    def action_preview_sale_order(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'self',
+            'url': self.get_portal_url(),
+        }

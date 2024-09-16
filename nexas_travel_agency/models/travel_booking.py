@@ -18,6 +18,7 @@ class TravelBooking(models.Model):
         ('cancelled', 'Cancelled')
     ], string='Status', default='pending',tracking=True)
     payment_id = fields.Many2one('account.payment', string='Payment')
+    trip_ids=fields.Many2many('travel.trip','trip_booking_rel','trip_id','name',string='Trips',ondelete='cascade')
 
 
     @api.model_create_multi

@@ -3,6 +3,7 @@ from odoo import fields,models
 class TravelAgency(models.Model):
     _name="travel.agency"
     _description="Travel Agency Details"
+    _inherit=['mail.thread']
 
 
     name=fields.Char(string="Agency Name",size=6,translate=True,required=True,trim=True)

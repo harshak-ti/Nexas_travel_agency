@@ -20,6 +20,7 @@
         "views/travel_agency_vehicles_views.xml",
         "views/res_partner_views.xml",
         "views/sale_order_inherit_views.xml",
+        "views/report_travel_trip.xml",
         "views/menus.xml",
         "data/travel_trip_data.xml",
         "data/travel_agency_vehicles.xml",
@@ -29,6 +30,7 @@
     ],
     "assets":{
         'web.assets_backend':[
+         
             "static/src/js/demo.js",
             "static/src/js/custom_button.js",
       "static/src/js/confirm_booking.js",

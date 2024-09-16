@@ -16,6 +16,8 @@ class TravelTrip(models.Model):
     start_date=fields.Date(string='Start Date',required=True)
     end_date=fields.Date(string='End Date',required=True)
     destination=fields.Char(string='Destination',required=True)
+    
+    booking_ids=fields.Many2many('travel.booking','trip_booking_rel','name','trip_id',string='Bookings',ondelete='cascade')
     booking_ids=fields.One2many(comodel_name='travel.booking',inverse_name='trip_id',string='Bookings',ondelete='cascade')
     itinerary_ids=fields.One2many(comodel_name='travel.itinerary',inverse_name='trip_id',string="Itineraries",ondelete='cascade')
     products_ids=fields.One2many(comodel_name='travel.product',inverse_name='trip_id',string="Products",ondelete='cascade')
@@ -64,7 +66,9 @@ class TravelTrip(models.Model):
 
 
     def write(self, vals):
+        print("hello")
         res = super(TravelTrip, self).write(vals)
+        _l.info("The vals :",res)
         for rec in self:
             if rec.hired_vehicle:
                 rec.hired_vehicle.status = 'in_use'
@@ -74,6 +78,7 @@ class TravelTrip(models.Model):
     @api.model
     def create(self, vals):
         res = super(TravelTrip, self).create(vals)
+        _l.info("The vals :",res)
         if res.hired_vehicle:
             res.hired_vehicle.status = 'in_use'
             res.hired_vehicle.driver_id.status='occupied'
@@ -96,55 +101,55 @@ class TravelTrip(models.Model):
         return True 
 
 
-    def view_record_action(self):
-        records=self.search([])
-        # records=self.browse(records_ids)
-        _l.info(f"Displaying self: {self}")
-        for rec in records:
-            _l.info(f"Display the record : {rec.name}")
-            if rec.name=="Jaipur Trip":
-                    _l.info(f"Displaying booking ids : ")
+    # def view_record_action(self):
+    #     records=self.search([])
+    #     # records=self.browse(records_ids)
+    #     _l.info(f"Displaying self: {self}")
+    #     for rec in records:
+    #         _l.info(f"Display the record : {rec.name}")
+    #         if rec.name=="Jaipur Trip":
+    #                 _l.info(f"Displaying booking ids : ")
                     
-                    rec.write({
-                            'booking_ids':[(2,rec.booking_ids[0].id,0)]
-                })
+    #                 rec.write({
+    #                         'booking_ids':[(2,rec.booking_ids[0].id,0)]
+    #             })
 
-        return True  
+    #     return True  
     
-    def view_record_action(self):
-        records=self.search([])
-        # records=self.browse(records_ids)
-        _l.info(f"Displaying self: {self}")
-        for rec in records:
-            _l.info(f"Display the record : {rec.name}")
-            if rec.name=="Jaipur Trip":
-                    _l.info(f"Displaying booking ids : ")
-                    existing_products=self.env['travel.product'].search([]).ids
-                    rec.write({
-                            'products_ids':[(4,existing_products[0],0)]
-                })
+    # def view_record_action(self):
+    #     records=self.search([])
+      
+    #     _l.info(f"Displaying self: {self}")
+    #     for rec in records:
+    #         _l.info(f"Display the record : {rec.name}")
+    #         if rec.name=="Jaipur Trip":
+    #                 _l.info(f"Displaying booking ids : ")
+    #                 existing_products=self.env['travel.product'].search([]).ids
+    #                 rec.write({
+    #                         'products_ids':[(4,existing_products[0],0)]
+    #             })
 
-        return True  
+    #     return True  
     
 
-    def view_record_action(self):
-        records=self.search([])
-        _l.info(f"Displaying self: {self}")
-        for rec in records:
-            _l.info(f"Display the record : {rec.name}")
-            if rec.name=="Jaipur Trip":
-               for booking in rec.booking_ids:
-                    _l.info(f"Displaying booking ids : {booking}")
-                    if booking.customer_id.id==1 :
-                        rec.write({
-                            'booking_ids':[(1,booking.id,{
+    # def view_record_action(self):
+    #     records=self.search([])
+    #     _l.info(f"Displaying self: {self}")
+    #     for rec in records:
+    #         _l.info(f"Display the record : {rec.name}")
+    #         if rec.name=="Jaipur Trip":
+    #            for booking in rec.booking_ids:
+    #                 _l.info(f"Displaying booking ids : {booking}")
+    #                 if booking.customer_id.id==1 :
+    #                     rec.write({
+    #                         'booking_ids':[(1,booking.id,{
                                
-                                'status':'confirmed'
+    #                             'status':'confirmed'
 
-                            })]
-                })
+    #                         })]
+    #             })
 
-        return True  
+    #     return True  
 
 
     
