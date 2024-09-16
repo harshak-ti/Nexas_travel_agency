@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_booking_tree_inherit" model="ir.ui.view">
+        <field name="name">sale.view.order.inherit.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-muted">"status == 'confirmed'"</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="string">Booking Date</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Registered By</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activity_ids']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+
+
+        </field>
+    </record>
+    <record id="view_booking_form_inherit" model="ir.ui.view">
+        <field name="name">sale.view.order.inherit.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//header//field[@name='state']" position="before">
+                <button name="action_confirm" type="object" string="Confirm" invisible="status !='pending'" class="status"/>
+                <button name="action_cancel" type="object" string="Cancel" invisible="status != 'pending'"></button>
+                <field name="status" widget="statusbar" statusbar_visible="pending,confirmed" class='btn-success'></field>
+            </xpath>
+            <xpath expr="//header//field[@name='state']" position="attributes">
+
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//header//button[@name='action_confirm'][2]" position="attributes">
+
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//header//button[@name='action_cancel']" position="attributes">
+
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='sale_order_template_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='order_lines']" position="attributes">
+                <attribute name="string">Trips</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='optional_products']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='other_information']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- <xpath expr="//page//tree//field[@name='product_id']" position="attributes">
+                <attribute name="domain">[('destination', '!=', False),('trip_type', '=', 'business')]</attribute>
+            </xpath> -->
+            <xpath expr="//page//tree//field[@name='product_template_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page//tree//field[@name='product_template_id']" position="replace">
+                <field name="product_id" domain="[('destination', '!=', False)]" string="Trip"/>
+            </xpath>
+            <xpath expr="//page//tree//control" position="replace">
+
+            </xpath>
+            <xpath expr="//tree//field[@name='price_unit']" position="attributes">
+                <attribute name="string">Trip Cost</attribute>
+            </xpath>
+            <xpath expr="//tree//field[@name='product_uom_qty']" position="attributes">
+                <attribute name="column_invisible">1</attribute>
+
+
+            </xpath>
+
+
+
+            <xpath expr="//group[@name='partner_details']" position="inside">
+                <field name="date_order" string="Booking Date" />
+                <field name="payment_term_id" options="{'no_open': True, 'no_create': True}" can_create="True" can_write="True" field_id="payment_term_id_0"/>
+                <field name="preferences" field_id="preferences_0"/>
+            </xpath>
+            <xpath expr="//group[@name='order_details']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale.action_orders" model="ir.actions.act_window">
+        <field name="name">Bookings</field>
+        <field name="res_model">sale.order</field>
+        <field name="domain">[('status','=','confirmed')]</field>
+    </record>
+
+</odoo>

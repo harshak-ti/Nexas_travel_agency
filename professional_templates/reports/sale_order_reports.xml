@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+            <!--inherits the default sales report  and override its name  and file-->
+      <!-- <report 
+            id="sale.action_report_saleorder"
+            model="sale.order"
+            string="Quotation / Order"
+            report_type="qweb-pdf"
+            name="professional_templates.sale_order"
+            file="professional_templates.sale_order"
+      />
+        <report
+            id="sale.action_report_pro_forma_invoice"
+            string="PRO-FORMA Invoice"
+            model="sale.order"
+            report_type="qweb-pdf"
+            groups="sale.group_proforma_sales"
+            file="professional_templates.report_saleorder_pro_forma"
+            name="professional_templates.report_saleorder_pro_forma"
+            print_report_name="'PRO-FORMA - %s' % (object.name)"
+        /> -->
+
+        <record id="sale.action_report_saleorder" model="ir.actions.report">
+            <field name="name">Quotation / Order</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">professional_templates.sale_order</field>
+            <field name="report_file">professional_templates.sale_order</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+        </record>
+
+        <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
+            <field name="name">PRO-FORMA Invoice</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">professional_templates.report_saleorder_pro_forma</field>
+            <field name="report_file">professional_templates.report_saleorder_pro_forma</field>
+            <field name="print_report_name">'PRO-FORMA - %s' % (object.name)</field>
+            <field name="groups_id" eval="(4, ref('sale.group_proforma_sales'))" />
+            <field name="binding_model_id" ref="model_sale_order" />
+        </record>
+
+    </data>
+</odoo>

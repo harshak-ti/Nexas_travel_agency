@@ -1,0 +1,23 @@
+<odoo>
+	<data>
+
+		<!-- <report
+			string="Picking Operations"
+			id="stock.action_report_picking"
+			model="stock.picking"
+			report_type="qweb-pdf"
+			name="professional_templates.report_picking"
+			file="professional_templates.report_picking_operations"
+			/> -->
+
+		<record id="stock.action_report_picking" model="ir.actions.report">
+			<field name="name">Picking Operations</field>
+			<field name="model">stock.picking</field>
+			<field name="report_type">qweb-pdf</field>
+			<field name="report_name">professional_templates.report_picking</field>
+			<field name="report_file">professional_templates.report_picking_operations</field>
+			<field name="binding_model_id" ref="model_stock_picking" />
+		</record>
+
+	</data>
+</odoo>

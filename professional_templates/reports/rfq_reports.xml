@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+            <!--inherits the default sales report  and override its name  and file-->
+        <!-- <report 
+            string="Request for Quotation" 
+            id="purchase.report_purchase_quotation" 
+            model="purchase.order" 
+            report_type="qweb-pdf"
+            name="professional_templates.rfq" 
+            file="professional_templates.rfq"
+        /> -->
+
+        <record id="purchase.report_purchase_quotation" model="ir.actions.report">
+            <field name="name">Request for Quotation</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">professional_templates.rfq</field>
+            <field name="report_file">professional_templates.rfq</field>
+            <field name="binding_model_id" ref="model_purchase_order" />
+        </record>
+    </data>
+</odoo>

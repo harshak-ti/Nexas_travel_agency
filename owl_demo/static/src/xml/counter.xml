@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<t t-name="counter">
+    <div>
+        <p>Count: <span t-esc="state.count"></span></p>
+        <button t-on-click="increment">+</button>
+        <button t-on-click="decrement">-</button>
+    </div>
+</t>

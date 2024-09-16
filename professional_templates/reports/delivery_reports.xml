@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <!-- <report
+            string="Delivery Slip"
+            id="stock.action_report_delivery"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="professional_templates.report_deliveryslip"
+            file="professional_templates.report_deliveryslip"
+        /> -->
+
+        <record id="stock.action_report_delivery" model="ir.actions.report">
+            <field name="name">Delivery Slip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="model">stock.picking</field>
+            <field name="report_name">professional_templates.report_deliveryslip</field>
+            <field name="report_file">professional_templates.report_deliveryslip</field>
+            <field name="binding_model_id" ref="model_stock_picking"/>
+        </record>
+
+    </data>
+</odoo>

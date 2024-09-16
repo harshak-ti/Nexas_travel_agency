@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <record id="travel_trip_inherit_view_tree" model="ir.ui.view">
+    <field name="name">travel_trip_inherit.view.tree</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_product_tree_view" />
+    <field name="arch" type="xml">
+      <xpath expr="//tree" position="attributes">
+        <attribute name="string">Trips</attribute>
+      </xpath>
+      <xpath expr="//field[@name='default_code']" position="attributes">
+        <attribute name="optional">hide</attribute>
+      </xpath>
+    </field>
+  </record>
+
+
+
+
+  <record id="travel_trip_inherit_view_form" model="ir.ui.view">
+    <field name="name">travel_trip_inherit.view.form</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_normal_form_view" />
+    <field name="arch" type="xml">
+      <xpath expr="//form" position="attributes">
+        <attribute name="string">Trips</attribute>
+      </xpath>
+      <xpath expr="//field[@name='lst_price']" position="attributes">
+        <attribute name="string">Trip Cost</attribute>
+      </xpath>
+      <xpath expr="//field[@name='priority']" position="attributes">
+        <attribute name="readonly">0</attribute>
+      </xpath>
+
+      <xpath expr="//label[@for='name']" position="replace">
+        <label for="name" string="Trip Name" invisible="context.get('default_itinerary',False)"/>
+      </xpath>
+      <xpath expr="//label[@for='name']" position="after">
+        <label for="name" string="Itinerary Name" invisible="context.get('default_trip',False)"/>
+      </xpath>
+      <xpath expr="//field[@name='barcode']" position="replace"></xpath>
+
+      <xpath expr="//field[@name='product_template_variant_value_ids']" position="before">
+        <group name="trip_details">
+          <field name="start_date" required="1" invisible="context.get('default_itinerary',False)"/>
+          <field name="end_date" required="1" invisible="context.get('default_itinerary',False)"/>
+          <field name="destination" required="1" invisible="context.get('default_itinerary',False)"/>
+        </group>
+      </xpath>
+
+
+      <xpath expr="//form//sheet//div[@name='options']" position='attributes'>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//form//sheet//button[@name='action_view_sales']" position='attributes'>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='invoice_policy']" position='attributes'>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='name']" position='attributes'>
+        <attribute name="placeholder">e.g. Manali Trip</attribute>
+      </xpath>
+      <xpath expr="//notebook/page[2]" position='attributes'>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//notebook/page[3]" position='attributes'>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//notebook//page[@name='invoicing']" position='attributes'>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//notebook//group[@name='group_general']" position='attributes'>
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//notebook//page//group//label[@for='lst_price']" position='before'>
+        <label for='trip_type'/>
+        <div>
+          <field name="trip_type" />
+
+        </div>
+      </xpath>
+    </field>
+  </record>
+
+
+  <record id="product.product_normal_action_sell" model="ir.actions.act_window">
+    <field name="name">Trips</field>
+    <field name="res_model">product.product</field>
+    <field name="domain">[('destination','!=',False)]</field>
+    <field name="view_id" ref="travel_trip_inherit_view_tree" />
+    <field name="context">{'default_trip':True}</field>
+  </record>
+</odoo>

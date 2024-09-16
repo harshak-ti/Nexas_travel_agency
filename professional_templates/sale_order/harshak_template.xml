@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="SO_20_document" name="Harshak Template">
+      <!-- Multicompany -->
+      <t t-if="doc and 'company_id' in doc">
+        <t t-set="company" t-value="doc.company_id"></t>
+      </t>
+      <t t-if="not doc or not 'company_id' in doc">
+        <t t-set="company" t-value="res_company"></t>
+      </t>
+      <div class="page">
+        <t t-if="style.header">
+          <div
+            class=""
+            style="width: 100%; text-align: center; padding: 0; margin: 0"
+          >
+            <div style="width: auto; padding-left: 15px">
+              <t t-call="professional_templates.company_address" />
+            </div>
+          </div>
+        </t>
+        <div style="width: 100%; height: 100%; background-color: red">
+          Harshak
+        </div>
+      </div>
+      <!--/FOOTER-->
+    </template>
+  </data>
+</odoo>
