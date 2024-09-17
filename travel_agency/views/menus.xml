@@ -10,7 +10,7 @@
 
     <menuitem id="travel_agency_menuitem_booking" name="Bookings" parent="tarvel_agency_menu" sequence="10"/>
 
-    <menuitem id="travel_agency_menuitem_booking_menuitems" name="Manage Booking" parent="travel_agency_menuitem_booking" action="sale.action_orders" sequence="20"/>
+    <menuitem id="travel_agency_menuitem_booking_menuitems" name="Manage Booking" parent="travel_agency_menuitem_booking" action="travel_booking_inherit_action" sequence="20"/>
 
     <menuitem id="travel_agency_menuitem_itinerary" name="Itinerary" parent="tarvel_agency_menu" sequence="10"/>
 

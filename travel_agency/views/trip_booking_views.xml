@@ -29,7 +29,7 @@
         <field name="arch" type="xml">
 
             <xpath expr="//header//field[@name='state']" position="before">
-                <button name="action_confirm" type="object" string="Confirm" invisible="status !='pending'" class="status"/>
+                <button name="button_click_method" type="object" string="Confirm" invisible="status !='pending'" class="status" context="{'user_clicked':True}"/>
                 <button name="action_cancel" type="object" string="Cancel" invisible="status != 'pending'"></button>
                 <field name="status" widget="statusbar" statusbar_visible="pending,confirmed" class='btn-success'></field>
             </xpath>
@@ -91,10 +91,25 @@
         </field>
     </record>
 
-    <record id="sale.action_orders" model="ir.actions.act_window">
+    <record id="travel_booking_inherit_view_search" model="ir.ui.view">
+        <field name="name">travel_booking_inherit.view.search</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <search >
+                <field name="status" />
+                <filter name="confirm_booking" string="confirm_booking" domain="[('status', '=', 'confirmed')]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="travel_booking_inherit_action" model="ir.actions.act_window">
         <field name="name">Bookings</field>
         <field name="res_model">sale.order</field>
-        <field name="domain">[('status','=','confirmed')]</field>
+        <!-- <field name="domain">[('status','=','confirmed')]</field> -->
+        <!-- <field name="context">{'group_by':'partner_id'}</field> -->
+        <!-- <field name="context">{'group_by':'partner_id','searchpanel_default_confirm_booking':1}</field> -->
+        <field name="search_view_id" ref="travel_booking_inherit_view_search" />
+
     </record>
 
 </odoo>
