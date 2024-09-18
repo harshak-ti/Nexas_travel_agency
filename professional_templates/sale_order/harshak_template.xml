@@ -11,20 +11,149 @@
       </t>
       <div class="page">
         <t t-if="style.header">
-          <div
-            class=""
-            style="width: 100%; text-align: center; padding: 0; margin: 0"
-          >
+          <div class="header" style="width: 100%; text-align: center; padding: 0; margin: 0">
             <div style="width: auto; padding-left: 15px">
               <t t-call="professional_templates.company_address" />
             </div>
           </div>
         </t>
-        <div style="width: 100%; height: 100%; background-color: red">
-          Harshak
+        <div style="width: 100%; height: 100%;">
+          <div style="margin: 20px 0;">
+            <div style="background-color: #f4a261; color: #fff; padding: 10px; font-size: 18px; font-weight: bold;">AGENCY NAME</div>
+            <div style="padding: 10px; border: 1px solid #ccc;">
+              <div style="width :100%;display: flex !important;flex-direction:row; justify-content: space-between; margin-bottom: 10px;">
+                <div style="width: 38%;">
+                  <t t-call="professional_templates.company_address" />
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div style="margin: 20px 0;">
+            <div style="background-color: #f4a261; color: #fff; padding: 10px; font-size: 18px; font-weight: bold;">BOOKING DETAILS</div>
+            <div style="padding: 10px; border: 1px solid #ccc;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div style="width: 48%;">
+                  <div>
+                    <t t-out="doc.name"/>
+                  </div>
+                  <div>
+                    <t t-out="doc.project_title"/>
+                  </div>
+                  <div>
+                    <t t-out="doc.partner_id.name"/>
+                  </div>
+                  <div>
+                    <t t-out="doc.date_order"/>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
+              <tr>
+                <th style="border: 1px solid #ccc; padding: 10px; text-align: left; background-color: #333; color: #fff;">TRIP#</th>
+                <th style="border: 1px solid #ccc; padding: 10px; text-align: left; background-color: #333; color: #fff;">DESTINATION</th>
+                <th style="border: 1px solid #ccc; padding: 10px; text-align: left; background-color: #333; color: #fff;">START DATE</th>
+                <th style="border: 1px solid #ccc; padding: 10px; text-align: left; background-color: #333; color: #fff;">END DATE</th>
+                <th style="border: 1px solid #ccc; padding: 10px; text-align: left; background-color: #333; color: #fff;">TOTAL COST</th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+
+              <t t-foreach="doc.order_line" t-as="order">
+                <tr>
+                  <td style="border: 1px solid #ccc; padding: 10px;">
+                    <t t-out="order.product_id.name"/>
+                  </td>
+                  <td style="border: 1px solid #ccc; padding: 10px;">
+                    <t t-out="order.product_id.destination"/>
+                  </td>
+                  <td style="border: 1px solid #ccc; padding: 10px;">
+                    <t t-out="order.product_id.start_date"/>
+                  </td>
+                  <td style="border: 1px solid #ccc; padding: 10px;">
+                    <t t-out="order.product_id.end_date"/>
+                  </td>
+                  <td style="border: 1px solid #ccc; padding: 10px;">
+                    <t t-out="order.price_unit"/>
+                  </td>
+                </tr>
+              </t>
+
+
+              <tr style="background-color: #f4a261; color: #fff;">
+                <td colspan="4" style="border: 1px solid #ccc; padding: 10px;">TOTAL</td>
+                <td style="border: 1px solid #ccc; padding: 10px;">
+                  <t t-out="doc.tax_totals['formatted_amount_total']"/>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <tbody>
+              <tr style="background-color: #f4a261; color: #fff;">
+                <td colspan="4" style="border: 1px solid #ccc; padding: 10px;">SUBTOTAL</td>
+                <td style="border: 1px solid #ccc; padding: 10px;">
+                  <t t-out="doc.tax_totals['formatted_amount_total']"/>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" style="border: 1px solid #ccc; padding: 10px;">TAX RATE</td>
+                <td style="border: 1px solid #ccc; padding: 10px;">15.00%</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="border: 1px solid #ccc; padding: 10px;">TOTAL TAX</td>
+                <td style="border: 1px solid #ccc; padding: 10px;">
+                  <t t-out="doc.tax_totals['groups_by_subtotal']['Untaxed
+Amount'][0]['formatted_tax_group_amount']"/>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" style="border: 1px solid #ccc; padding: 10px;">OTHER</td>
+                <td style="border: 1px solid #ccc; padding: 10px;">
+                  <t t-out="doc.amount_words"/>
+                </td>
+              </tr>
+              <tr style="background-color: #f4a261; color: #fff;">
+                <td colspan="4" style="border: 1px solid #ccc; padding: 10px;">GRAND TOTAL</td>
+                <td style="border: 1px solid #ccc; padding: 10px;">
+                  <t t-out="doc.tax_totals['formatted_amount_total']"/>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
         </div>
       </div>
       <!--/FOOTER-->
+      <div class="footer" style="width: 100%; text-align: center; padding: 0; margin: 0">
+        <div style="text-align: center; margin: 20px 0;">
+          <div style="font-size: 24px; font-weight: bold; color: #f4a261;">THANK YOU!</div>
+          <div style="background-color: #333; color: #fff; padding: 10px; display: inline-block;justify-content: space-around;">
+            <div style="display: inline-block;text-align: center;">
+              <!-- <i class="fas fa-envelope" style="font-size: 24px; margin-bottom: 5px;"></i> -->
+              <div>Email Address</div>
+            </div>
+            <div style="display: inline-block;text-align: center;">
+              <!-- <i class="fas fa-phone" style="font-size: 24px; margin-bottom: 5px;"></i> -->
+              <div>Point of Contact</div>
+            </div>
+            <div style="display: inline-block;text-align: center;">
+              <!-- <i class="fas fa-globe" style="font-size: 24px; margin-bottom: 5px;"></i> -->
+              <div>Web Address</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </template>
   </data>
 </odoo>
