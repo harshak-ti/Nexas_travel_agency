@@ -10,6 +10,7 @@
         "views/trip_inherit_views.xml",
         "views/itinerary_inherit_views.xml",
         "views/travel_booking_confirm_wizard_views.xml",
+        "views/res_config_view.xml",
         "views/menus.xml"
     ],
     "license":"LGPL-3"

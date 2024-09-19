@@ -16,3 +16,12 @@ class TravelTrip(models.Model):
         ('adventure', 'Adventure Trip'),
         ('pilgrimage', 'Pilgrimage'),
     ], string="Trip Type", default='leisure')
+
+
+    def create(self,vals):
+        is_agency_down = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_agency_down')
+        
+        if is_agency_down:
+            raise models.ValidationError("The agency is down. You cannot create new trips at the moment.")
+        else:
+            return super(TravelTrip,self).create(vals)

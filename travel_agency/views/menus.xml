@@ -16,5 +16,9 @@
 
     <menuitem id="travel_agency_menuitem_itinerary_menuitems" name="Manage Itinerary" parent="travel_agency_menuitem_itinerary" action="product_normal_action_sell_itinerary" sequence="20"/>
 
+    <menuitem id="travel_agency_menuitem_configuration" name="Configuration" parent="tarvel_agency_menu" sequence="10"/>
+
+    <menuitem id="travel_agency_menuitem_settings" name="Setting" parent="travel_agency_menuitem_configuration" action="travel_agency_setting_action" sequence="20"/>
+
 
 </odoo>

@@ -35,7 +35,7 @@
         <group name="itinerary_details" invisible="context.get('default_trip',False)">
           <field name="day" />
           <field name="description" />
-          <field name="location" />
+          <field name="location" invisible="context.get('default_trip',False)" />
         </group>
       </xpath>
 
