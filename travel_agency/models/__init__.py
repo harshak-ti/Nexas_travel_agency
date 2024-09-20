@@ -1,3 +1,4 @@
+from . import res_company
 from . import travel_trip_inherit
 from . import sale_order_line_inherit
 from . import sale_order_inherit

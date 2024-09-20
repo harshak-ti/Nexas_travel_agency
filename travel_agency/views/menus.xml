@@ -2,7 +2,7 @@
 
 <odoo>
 
-    <menuitem id="tarvel_agency_menu" name="Travel Agency New" sequence="10"/>
+    <menuitem id="tarvel_agency_menu" name="Travel Agency New" web_icon="travel_agency,static/description/icon.png"/>
 
     <menuitem id="travel_agency_menuitem_trip" name="Trips" parent="tarvel_agency_menu" sequence="10"/>
     <menuitem id="travel_agency_menuitem_trip_menuitems" name="Manage Trips" parent="travel_agency_menuitem_trip" action="product.product_normal_action_sell" sequence="20"/>

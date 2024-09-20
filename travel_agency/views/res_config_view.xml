@@ -3,24 +3,37 @@
     <record id="res_config_travel_agency" model="ir.ui.view">
         <field name="name">res.config.travel.agency.settings</field>
         <field name="model">res.config.settings</field>
-        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div" position="inside">
-                <div class="col-12 col-lg-6 o_setting_box">
-                    <div class="o_setting_right_pane">
-                        <label for="id" string="Travel Agency"/>
-                        <field name="id" invisible="1"/>
-                        <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." groups="base.group_multi_company"/>
+            <xpath expr="//form" position="inside">
 
-                        <div class="row content-group">
-                            <div class="mt16 col-12 text-nowrap">
-                                <label for="is_agency_down" string="Agency Down" class="o_light_label"/>
-                                <field name="is_agency_down" class="oe_inline"/>
+                <app string="Travel Agency" data-string="Travel Agency" name="travel_agency">
+
+                    <!-- <app notApp="1" string="Sales" data-string="Sales" name="sale_management" groups="sales_team.group_sale_manager"> -->
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="id" string="Travel Agency" style="font-size:1.3rem;  font-weight:600;"/>
+                            <field name="id" invisible="1"/>
+                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." groups="base.group_multi_company" style="margin-left:1rem;"/>
+
+                            <div class="row content-group">
+                                <div class="mt16 col-12 text-nowrap" style="display:flex; gap:1rem;">
+                                    <label for="is_agency_down" string="Agency Down" class="o_light_label"/>
+                                    <field name="is_agency_down" class="oe_inline" groups="base.group_system"/>
+                                </div>
+                                <div class="mt16 col-12 text-nowrap " style="display:flex; gap:1rem;">
+                                    <label for="is_booking_allowed" string="Allow Booking" class="o_light_label"/>
+                                    <field name="is_booking_allowed" class="oe_inline" groups="base.group_system"/>
+                                </div>
+                                <div class="mt16 col-12 text-nowrap " style="display:flex; gap:1rem;">
+                                    <label for="is_itinerary_allowed" string="Allow Itinerary" class="o_light_label"/>
+                                    <field name="is_itinerary_allowed" class="oe_inline" groups="base.group_system"/>
+                                </div>
+
                             </div>
-
                         </div>
                     </div>
-                </div>
+                </app>
             </xpath>
         </field>
     </record>
@@ -29,9 +42,9 @@
         <field name="name">travel.agency.setting.action</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
-
-        <field name="context">{'bin_size':False}</field>
-
+        <!-- <field name="view_id" ref="res_config_travel_agency" /> -->
+        <!-- <field name="target">inline</field> -->
+        <field name="context">{'module' : 'travel_agency', 'bin_size': False}</field>
     </record>
 
 

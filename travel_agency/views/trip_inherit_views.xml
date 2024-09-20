@@ -43,9 +43,10 @@
 
       <xpath expr="//field[@name='product_template_variant_value_ids']" position="before">
         <group name="trip_details">
+          <field name="can_trip" />
           <field name="start_date" required="1" invisible="context.get('default_itinerary',False)"/>
           <field name="end_date" required="1" invisible="context.get('default_itinerary',False)"/>
-          <field name="destination" required="1" invisible="context.get('default_itinerary',False)"/>
+          <field name="destination" invisible="can_trip"/>
         </group>
       </xpath>
 

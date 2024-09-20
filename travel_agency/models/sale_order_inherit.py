@@ -67,3 +67,11 @@ class SaleOrder(models.Model):
         return self
 
 
+    def create(self,vals):
+        is_booking_allow = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_booking_allowed')
+        
+        if not is_booking_allow:
+            raise models.ValidationError("The server is down. You cannot create new booking at the moment.")
+        else:
+            return super(SaleOrder,self).create(vals)
+
