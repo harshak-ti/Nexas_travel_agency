@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="PICK_13_document" name="Harshak Template">
+      <t t-if="o and 'company_id' in o">
+        <t t-set="company" t-value="o.company_id"></t>
+      </t>
+      <t t-if="not o or not 'company_id' in o">
+        <t t-set="company" t-value="res_company"></t>
+      </t>
+
+      <!-- <t t-call="professional_templates.picking_lines" style="display: block; float: none" /> -->
+      <div class="header d-block h-25" style="width: 80%; margin: 0 auto">
+        <div style="width:100%;">
+          <img t-att-src="image_data_uri(company.logo)" style="width: 200px; height: 100px" />
+        </div>
+        <table style="width: 100%;">
+          <tr>
+            <!-- First Column -->
+            <td style="width: 30%;  vertical-align: top;">
+              <div t-field="company.name" />
+              <div t-field="company.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
+            </td>
+
+            <!-- Center Column -->
+
+            <!-- Third Column (Empty for Flexbox space-between effect) -->
+            <td style="width: 30%; "></td>
+            <td style="width: 40%;  text-align: center;">
+              <div>
+                Order Number:
+                <span style="font-weight: 600" t-esc="o.origin" />
+              </div>
+              <div>
+                Delivery Out Number: Backorder -
+                <h5 style="font-weight: 700; font-size: 1.2rem" t-esc="o.name" />
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="border border-2" style="background-color: #fff">
+        <div style="width:80%;margin:0 auto;margin-top:1rem;">
+
+
+          <div class="">
+            <t t-if="o.backorder_ids">
+              <img t-att-src="'/report/barcode/QR/%s' % o.backorder_ids" />
+            </t>
+          </div>
+          <div style="width: 100%; margin: 2rem 0">
+            <span t-attf-style="font-size:{{
+                int(style.body_font) + 6
+              }}px; font-weight:bold;">Delivery Address:</span
+            >
+            <br />
+            <t t-esc="o.move_ids[0].partner_id.name" />
+            <br />
+            <t t-esc="o.move_ids[0].partner_id.street" />
+            <br />
+            <t t-esc="o.move_ids[0].partner_id.city" />
+
+            <t t-esc="o.move_ids[0].partner_id.state_id.name" />
+            <br />
+            <t t-esc="o.move_ids[0].partner_id.country_id.name" />
+          </div>
+          <table style="
+              width: 100%;
+              margin-left:8rem;
+              margin-right:auto;
+              margin-top: 2rem;
+            ">
+            <tr>
+              <td>
+                <p style="line-height: 0; font-weight: 600">Order Number:</p>
+                <p>
+                  <span t-esc="o.origin"></span>
+                </p>
+              </td>
+              <td>
+                <p style="line-height: 0; font-weight: 600">Status:</p>
+                <p>
+                  <span t-esc="o.state"></span>
+                </p>
+              </td>
+              <td>
+                <p style="line-height: 0; font-weight: 600">Scheduled Date:</p>
+                <p>
+                  <span t-esc="o.scheduled_date"></span>
+                </p>
+              </td>
+            </tr>
+          </table>
+
+          <div style="margin-top: 20px">
+            <table style="width: 100%; border-collapse: collapse">
+              <thead style="border: none">
+                <tr style="text-align: center">
+                  <th style="border: 1px solid #ccc; padding: 8px">Product</th>
+                  <th style="border: 1px solid #ccc; padding: 8px">
+                    Vendor Product Code
+                  </th>
+                  <th style="border: 1px solid #ccc; padding: 8px">Quantity</th>
+                  <th style="border: 1px solid #ccc; padding: 8px">From</th>
+                </tr>
+              </thead>
+              <tbody style="text-align: center">
+                <t t-foreach="o.move_ids.sorted(key=lambda m: m.product_id.id)" t-as="move_line">
+                  <tr>
+                    <td style="border: 1px solid #ccc; padding: 8px">
+                      <span t-field="move_line.product_id.display_name" />
+                      <br />
+                      <span t-field="move_line.product_id.description_picking" />
+                    </td>
+                    <td style="border: 1px solid #ccc; padding: 8px">
+                      <span t-field="move_line.product_id.seller_ids" />
+                    </td>
+                    <td style="border: 1px solid #ccc; padding: 8px">
+                      <span t-field="move_line.product_qty" />
+                    </td>
+                    <td style="border: 1px solid #ccc; padding: 8px">
+                      <span t-field="move_line.location_id" />
+                    </td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="footer d-block h-25" style="width:100%;text-align: center; ">
+
+        <p>
+              Phone: +353 1 894 1255 | Email:
+          <a href="mailto:sales@galro.ie" style="color: #0000ee">sales@galro.ie</a
+              >
+              | Website:
+          <a href="http://galro.ie" style="color: #0000ee">galro.ie</a>
+        </p>
+      </div>
+    </template>
+  </data>
+</odoo>

@@ -11,7 +11,10 @@ class TravelItinerary(models.Model):
 
 
     def create(self,vals):
-        is_itinerary_allow = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_itinerary_allowed')
+        settings = self.env['res.config.settings'].search([], limit=1)
+        # is_agency_down = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_agency_down')
+        is_itinerary_allow = settings and settings.is_itinerary_allowed
+        # is_itinerary_allow = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_itinerary_allowed')
         
         if not is_itinerary_allow:
             raise models.ValidationError("The server is down. You cannot create new booking at the moment.")

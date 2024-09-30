@@ -19,106 +19,121 @@
     </record>
 
 
-        <!-- Form View -->
-        <record id="view_travel_agency_drivers_form" model="ir.ui.view">
-            <field name="name">travel.agency.drivers.form</field>
-            <field name="model">travel.agency.drivers</field>
-            <field name="arch" type="xml">
-                <form string="Driver">
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="driver_license_number"/>
-                            <field name="phone_number"/>
-                            <field name="email"/>
-                            <field name="address"/>
-                            <field name="vehicle_id"/>
-                            <field name="license_expiry_date"/>
-                            <field name="date_of_birth"/>
-                            <field name="hire_date"/>
-                            <field name="profile_image" widget="image"/>
-                            <field name="status"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+    <!-- Form View -->
+    <record id="view_travel_agency_drivers_form" model="ir.ui.view">
+        <field name="name">travel.agency.drivers.form</field>
+        <field name="model">travel.agency.drivers</field>
+        <field name="arch" type="xml">
+            <form string="Driver">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="driver_license_number"/>
+                        <field name="phone_number"/>
+                        <field name="email"/>
+                        <field name="address"/>
+                        <field name="vehicle_id"/>
+                        <field name="license_expiry_date"/>
+                        <field name="date_of_birth"/>
+                        <field name="hire_date"/>
+                        <field name="profile_image" widget="image"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-        <!-- Kanban View -->
-        <record id="view_travel_agency_drivers_kanban" model="ir.ui.view">
-            <field name="name">travel.agency.drivers.kanban</field>
-            <field name="model">travel.agency.drivers</field>
-            <field name="arch" type="xml">
-                <kanban string="Drivers">
-                    <templates>
-                        <t t-name="kanban-box">
-                           
-                        
+    <!-- Kanban View -->
+    <record id="view_travel_agency_drivers_kanban" model="ir.ui.view">
+        <field name="name">travel.agency.drivers.kanban</field>
+        <field name="model">travel.agency.drivers</field>
+        <field name="arch" type="xml">
+            <kanban string="Drivers">
+                <templates>
+                    <t t-name="kanban-box">
+
+
 
                         <div style="background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); padding: 1.5rem; max-width: 28rem; width: 100%; position: relative;">
                             <div style="position: absolute; top: 0; right: 0; height: 6rem; width: 6rem; background-color: #3B82F6; border-top-right-radius: 0.5rem; border-bottom-left-radius: 3rem;"></div>
                             <div style="display: flex; align-items: center; gap: 1rem;">
-                              <img t-att-src="kanban_image('travel.agency.drivers','profile_image',record.id.raw_value)" alt="Profile Image" style="width: 4rem; height: 4rem; border-radius: 9999px; border: 2px solid white;"/>
-                              <div>
-                                <h2 style="font-size: 1.25rem; font-weight: 600;"><field name="name" /></h2>
-                                <p style="color: #6B7280;"><field name="driver_license_number" /></p>
-                              </div>
+                                <img t-att-src="kanban_image('travel.agency.drivers','profile_image',record.id.raw_value)" alt="Profile Image" style="width: 4rem; height: 4rem; border-radius: 9999px; border: 2px solid white;"/>
+                                <div>
+                                    <h2 style="font-size: 1.25rem; font-weight: 600;">
+                                        <field name="name" />
+                                    </h2>
+                                    <p style="color: #6B7280;">
+                                        <field name="driver_license_number" />
+                                    </p>
+                                </div>
                             </div>
-                            <p style="margin-top: .9rem; color: #4B5563;"><field name="address" /></p>
+                            <p style="margin-top: .9rem; color: #4B5563;">
+                                <field name="address" />
+                            </p>
                             <div style="display: flex; gap: 2rem; margin-top: 1rem;">
-                              <div>
-                                <p style="font-size: .9rem; font-weight: 600;">Vehicle Name :</p>
-                                <p style="color: #6B7280;font-size: 0.8rem;"><field name="vehicle_id" /></p>
-                              </div>
-                              <div>
-                                <p style="font-size: .9rem; font-weight: 600;">License Expiry Date :</p>
-                                <p style="color: #6B7280;font-size: 0.8rem;"><field name="license_expiry_date" /></p>
-                              </div>
-                              <div>
-                                <p style="font-size: .9rem; font-weight: 600;">Hire Date :</p>
-                                <p style="color: #6B7280;font-size: 0.8rem;"><field name="hire_date" /></p>
-                              </div>
+                                <div>
+                                    <p style="font-size: .9rem; font-weight: 600;">Vehicle Name :</p>
+                                    <p style="color: #6B7280;font-size: 0.8rem;">
+                                        <field name="vehicle_id" />
+                                    </p>
+                                </div>
+                                <div>
+                                    <p style="font-size: .9rem; font-weight: 600;">License Expiry Date :</p>
+                                    <p style="color: #6B7280;font-size: 0.8rem;">
+                                        <field name="license_expiry_date" />
+                                    </p>
+                                </div>
+                                <div>
+                                    <p style="font-size: .9rem; font-weight: 600;">Hire Date :</p>
+                                    <p style="color: #6B7280;font-size: 0.8rem;">
+                                        <field name="hire_date" />
+                                    </p>
+                                </div>
                             </div>
                             <div style="display: flex; gap: 1rem; margin-top: 1rem;">
                                 <div t-attf-style="background-color: #{record.status.raw_value == 'available' ? 'green' : (record.status.raw_value == 'occupied' ? 'orange' : 'grey')}; color: white; padding: 0.5rem 1rem; border-radius: 1.2rem;">
                                     <field name="status"/>
                                 </div>
-                              <a t-attf-href="/web#id=#{record.id.raw_value}&amp;model=travel.agency.drivers&amp;view_type=form" style="background-color: black; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;">View Profile</a>
+                                <a t-attf-href="/web#id=#{record.id.raw_value}&amp;model=travel.agency.drivers&amp;view_type=form" style="background-color: black; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;">View Profile</a>
                             </div>
-                          </div>
-                        </t>
-                    </templates>
-                </kanban>
-            </field>
-        </record>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
 
-        <!-- Search View -->
-        <record id="view_travel_agency_drivers_search" model="ir.ui.view">
-            <field name="name">travel.agency.drivers.search</field>
-            <field name="model">travel.agency.drivers</field>
-            <field name="arch" type="xml">
-                <search string="Search Drivers">
-                    <field name="name"/>
-                    <field name="driver_license_number"/>
-                    <field name="phone_number"/>
-                    <field name="email"/>
-                    <field name="vehicle_id"/>
-                    <!-- <filter string="Active Drivers" domain="[('is_active', '=', True)]"/> -->
-                </search>
-            </field>
-        </record>
+    <!-- Search View -->
+    <record id="view_travel_agency_drivers_search" model="ir.ui.view">
+        <field name="name">travel.agency.drivers.search</field>
+        <field name="model">travel.agency.drivers</field>
+        <field name="arch" type="xml">
+            <search string="Search Drivers">
+                <field name="name"/>
+                <field name="driver_license_number"/>
+                <field name="phone_number"/>
+                <field name="email"/>
+                <field name="vehicle_id"/>
+                <!-- <filter string="Active Drivers" domain="[('is_active', '=', True)]"/> -->
+            </search>
+        </field>
+    </record>
 
 
-        <record id="action_travel_agency_drivers" model="ir.actions.act_window">
-            <field name="name">travel.agency.drivers.action</field>
-            <field name="res_model">travel.agency.drivers</field>
-            <field name="view_mode">tree,form,kanban,search</field>
-            <field name="view_id" ref="view_travel_agency_drivers_kanban" />
-            <field name="help" type="html">
-                <p>Ctreate the new Driver Details</p>
-            </field>
-        </record>
-    
-    
-    
+    <record id="action_travel_agency_drivers" model="ir.actions.act_window">
+        <field name="name">travel.agency.drivers.action</field>
+        <field name="res_model">travel.agency.drivers</field>
+        <field name="view_mode">tree,form,kanban,search</field>
+        <field name="view_id" ref="view_travel_agency_drivers_kanban" />
+        <field name="help" type="html">
+            <p>Ctreate the new Driver Details</p>
+        </field>
+    </record>
+
+
+
+
+
+
 </odoo>

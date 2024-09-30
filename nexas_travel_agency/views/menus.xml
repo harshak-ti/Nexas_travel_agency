@@ -1,112 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Main Menu for Travel Agency Management -->
-    <menuitem id="travel_agency_main_menu" 
-    name="Travel Agency" 
-    sequence="10" 
-    web_icon="nexas_travel_agency,static/description/icon.png"
-    groups="base.group_user"/>
+    <menuitem id="travel_agency_main_menu" name="Travel Agency" sequence="10" web_icon="nexas_travel_agency,static/description/icon.png" groups="base.group_user"/>
 
     <!-- Booking and Reservation Management -->
-    <menuitem id="travel_agency_booking_menu" 
-    name="Bookings" 
-    parent="travel_agency_main_menu" 
-    sequence="10"/>
+    <menuitem id="travel_agency_booking_menu" name="Bookings" parent="travel_agency_main_menu" sequence="10"/>
 
-    <menuitem id="travel_agency_booking_menu_item" 
-    name="Manage Bookings"         
-    parent="travel_agency_booking_menu"
-    action="action_travel_booking"
-    sequence="10"/>
+    <menuitem id="travel_agency_booking_menu_item" name="Manage Bookings" parent="travel_agency_booking_menu" action="action_travel_booking" sequence="10"/>
 
     <!-- Menu Item for Travel Itinerary -->
-    <menuitem id="travel_agency_itinerary_menu" 
-    name="Itinerary" 
-    parent="travel_agency_main_menu" 
-    sequence="30"
-    groups="nexas_travel_agency.group_travel_agency_owner,nexas_travel_agency.group_travel_agency_user"/>
+    <menuitem id="travel_agency_itinerary_menu" name="Itinerary" parent="travel_agency_main_menu" sequence="30" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_itinerary_menu_item" 
-    name="Manage Itinerary" 
-    parent="travel_agency_itinerary_menu"
-    action="action_travel_itinerary" 
-    sequence="10"
-    groups="nexas_travel_agency.group_travel_agency_owner,nexas_travel_agency.group_travel_agency_user"/>
+    <menuitem id="travel_agency_itinerary_menu_item" name="Manage Itinerary" parent="travel_agency_itinerary_menu" action="action_travel_itinerary" sequence="10" groups="base.group_user"/>
 
     <!-- Menu Item for Travel Trip -->
-    <menuitem id="travel_agency_trip_menu" 
-    name="Trips" 
-    parent="travel_agency_main_menu"
-    sequence="30" 
-    groups="nexas_travel_agency.group_travel_agency_owner,nexas_travel_agency.group_travel_agency_user"/>
+    <menuitem id="travel_agency_trip_menu" name="Trips" parent="travel_agency_main_menu" sequence="30" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_trip_menu_item" 
-    name="Manage Trips" 
-    parent="travel_agency_trip_menu" 
-    action="action_travel_trip"
-    sequence="30" 
-    groups="nexas_travel_agency.group_travel_agency_owner,nexas_travel_agency.group_travel_agency_user"/>
-    
-    <menuitem id="travel_agency_people_menu" 
-    name="People" parent="travel_agency_main_menu"
-    sequence="30" 
-    groups="nexas_travel_agency.group_travel_agency_owner,nexas_travel_agency.group_travel_agency_user"/>
-    
-    <menuitem id="res_partner_menu" 
-    name="Customer" 
-    action="account.res_partner_action_customer"
-    parent="travel_agency_people_menu" 
-    sequence="40" 
-    groups="base.group_user"/>
-    
-    <menuitem id="travel_agency_supplier_menu" 
-    name="Supplier" 
-    action="action_travel_supplier"
-    parent="travel_agency_people_menu" 
-    sequence="50" 
-    groups="base.group_user"/>
+    <menuitem id="travel_agency_trip_menu_item" name="Manage Trips" parent="travel_agency_trip_menu" action="action_travel_trip" sequence="30" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_driver_menu" 
-    name="Drivers" 
-    action="action_travel_agency_drivers"
-    parent="travel_agency_people_menu" 
-    sequence="60" 
-    groups="base.group_user"/>
+    <menuitem id="travel_agency_people_menu" name="People" parent="travel_agency_main_menu" sequence="30" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_configure_menu" 
-    name="Configure" 
-    parent="travel_agency_main_menu"
-    sequence="30" 
-    groups="nexas_travel_agency.group_travel_agency_owner,nexas_travel_agency.group_travel_agency_user"/>
+    <menuitem id="res_partner_menu" name="Customer" action="account.res_partner_action_customer" parent="travel_agency_people_menu" sequence="40" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_product_menu_item" 
-    name="Manage Product" 
-    parent="travel_agency_configure_menu"
-    action="action_travel_product" 
-    sequence="50" 
-    groups="base.group_user"/>
+    <menuitem id="travel_agency_supplier_menu" name="Supplier" action="action_travel_supplier" parent="travel_agency_people_menu" sequence="50" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_document_menu_item" 
-    name="Manage Documents"
-    parent="travel_agency_configure_menu" 
-    action="action_travel_document" 
-    sequence="40"/>
+    <menuitem id="travel_agency_driver_menu" name="Drivers" action="action_travel_agency_drivers" parent="travel_agency_people_menu" sequence="60" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_report_menu_item" 
-    name="Manage Reports"
-    parent="travel_agency_configure_menu" 
-    action="action_travel_report" 
-    sequence="50"/>
+    <menuitem id="travel_agency_configure_menu" name="Configure" parent="travel_agency_main_menu" sequence="30" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_details_menu_item" 
-    name="Agency Details" 
-    parent="travel_agency_configure_menu" 
-    action="action_travel_agency_details" />
+    <menuitem id="travel_agency_product_menu_item" name="Manage Product" parent="travel_agency_configure_menu" action="action_travel_product" sequence="50" groups="base.group_user"/>
 
-    <menuitem id="travel_agency_vehicles_menu_item" 
-    name="Vehicles Details" 
-    parent="travel_agency_configure_menu" 
-    action="action_travel_agency_vehicles" />
+    <menuitem id="travel_agency_document_menu_item" name="Manage Documents" parent="travel_agency_configure_menu" action="action_travel_document" sequence="40"/>
 
-    
+    <menuitem id="travel_agency_report_menu_item" name="Manage Reports" parent="travel_agency_configure_menu" action="action_travel_report" sequence="50"/>
+
+    <menuitem id="travel_agency_details_menu_item" name="Agency Details" parent="travel_agency_configure_menu" action="action_travel_agency_details" />
+
+    <menuitem id="travel_agency_vehicles_menu_item" name="Vehicles Details" parent="travel_agency_configure_menu" action="action_travel_agency_vehicles" />
+
+
 </odoo>

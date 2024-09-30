@@ -8,6 +8,8 @@
             <form string="Travel Booking">
                 <header>
 
+                    <button string="Send Mail" type="object" name="send_email_with_pdf_report"/>
+
                     <button name="action_confirm" type="object" string="Confirm" invisible="status !='pending'" class="status"/>
                     <button name="action_cancel" type="object" string="Cancel" invisible="status != 'pending'"></button>
                     <field name="status" widget="statusbar" statusbar_visible="pending,confirmed" class='btn-success'></field>
@@ -90,8 +92,7 @@
                                 <field name="trip_id" class="kanban_content_subtitle" style="font-size: 0.8rem;
   margin-bottom: 0.4rem;text-align: center;"/>
 
-                                <p class="kanban_content_date_section" style="font-size: 0.8rem;
-">
+                                <p class="kanban_content_date_section" style="font-size: 0.8rem;">
                                     <h1 style="font-size: 0.8rem;">Booking Date:</h1>
                                     <field name="booking_date" style="font-size: 0.7rem;"/>
                                 </p>
@@ -134,11 +135,21 @@
         <field name="res_model">travel.booking</field>
         <field name="view_mode">kanban,tree,form,search</field>
         <!-- <field name="view_id" ref="view_travel_booking_custom_button"/> -->
+        <!-- <field name="view_id" ref="nexas_travel_agency.travel_booking_kanban_inherit"/> -->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first travel booking
             </p>
         </field>
+    </record>
+
+    <record id="action_travel_booking_report" model="ir.actions.report">
+        <field name="name">Travel Booking Report</field>
+        <field name="model">travel.booking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nexas_travel_agency.report_travel_booking</field>
+        <field name="print_report_name">"Travel_Booking_%s" % (object.customer_id.name)</field>
+        <field name="binding_model_id" ref="model_travel_booking"/>
     </record>
 
 </odoo>

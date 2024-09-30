@@ -1,6 +1,0 @@
-
-<odoo>
-    <t t-name="nexas_travel_agency.YourComponent">
-        <div>Hello, OWL!</div>
-    </t>
-</odoo>

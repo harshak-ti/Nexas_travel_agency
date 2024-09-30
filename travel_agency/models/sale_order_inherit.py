@@ -68,10 +68,16 @@ class SaleOrder(models.Model):
 
 
     def create(self,vals):
-        is_booking_allow = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_booking_allowed')
-        
+        settings = self.env['res.config.settings'].search([], limit=1)
+        # is_agency_down = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_agency_down')
+        is_booking_allow = settings and settings.is_booking_allowed
+        # is_booking_allow = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_booking_allowed')
+        _l.info(f'-------->func2 before context is {is_booking_allow}')
         if not is_booking_allow:
             raise models.ValidationError("The server is down. You cannot create new booking at the moment.")
         else:
             return super(SaleOrder,self).create(vals)
 
+
+    def print_report(self):
+        return self.env.ref("travel_agency.travel_booking_report").report_action(self,config=False)

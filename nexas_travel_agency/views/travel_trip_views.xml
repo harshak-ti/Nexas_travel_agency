@@ -8,6 +8,9 @@
         <field name="arch" type="xml">
             <form string="Travel Trip">
 
+
+
+
                 <sheet>
 
                     <group >
@@ -190,7 +193,7 @@
     <record id="action_travel_trip" model="ir.actions.act_window">
         <field name="name">Travel Trips</field>
         <field name="res_model">travel.trip</field>
-        <field name="view_mode">form,kanban,calendar,search</field>
+        <field name="view_mode">tree,form,kanban,calendar,search</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first travel trip

@@ -9,5 +9,18 @@
         <field name="name">Travel Agency User</field>
         <field name="category_id" ref="base.module_category_hidden"/>
     </record>
+    <odoo>
+
+        <record id="group_custom_user" model="res.groups">
+            <field name="name">Custom User Group</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <!-- Implies group_user -->
+            <!-- Remove system group members -->
+            <field name="users" eval="[(3, ref('base.group_system'))]"/>
+            <!-- Excludes system administrators -->
+        </record>
+    </odoo>
+
 
 </odoo>

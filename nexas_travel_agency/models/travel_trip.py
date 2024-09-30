@@ -101,20 +101,20 @@ class TravelTrip(models.Model):
         return True 
 
 
-    # def view_record_action(self):
-    #     records=self.search([])
-    #     # records=self.browse(records_ids)
-    #     _l.info(f"Displaying self: {self}")
-    #     for rec in records:
-    #         _l.info(f"Display the record : {rec.name}")
-    #         if rec.name=="Jaipur Trip":
-    #                 _l.info(f"Displaying booking ids : ")
+    def view_record_action(self):
+        records=self.search([])
+        # records=self.browse(records_ids)
+        _l.info(f"Displaying self: {self}")
+        for rec in records:
+            _l.info(f"Display the record : {rec.name}")
+            if rec.name=="Jaipur Trip":
+                    _l.info(f"Displaying booking ids : ")
                     
-    #                 rec.write({
-    #                         'booking_ids':[(2,rec.booking_ids[0].id,0)]
-    #             })
+                    rec.write({
+                            'booking_ids':[(2,rec.booking_ids[0].id,0)]
+                })
 
-    #     return True  
+        return True  
     
     # def view_record_action(self):
     #     records=self.search([])

@@ -45,6 +45,10 @@
 
                 <attribute name="invisible">1</attribute>
             </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button name="print_report" string="Print" type="object" invisible="not id"></button>
+            </xpath>
             <xpath expr="//field[@name='sale_order_template_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -110,6 +114,28 @@
         <!-- <field name="context">{'group_by':'partner_id','searchpanel_default_confirm_booking':1}</field> -->
         <field name="search_view_id" ref="travel_booking_inherit_view_search" />
 
+    </record>
+
+    <record id="paperformat_booking_" model="report.paperformat">
+        <field name="name">Survey Certification</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="dpi">96</field>
+    </record>
+    <record id="travel_booking_report" model="ir.actions.report">
+        <field name="name">Booking Details</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">travel_agency.travel_booking_report_template</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
     </record>
 
 </odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="travel_booking_kanban_inherit" inherit_id="nexas_travel_agency.view_travel_booking_kanban">
+
+        <xpath expr="//div[@class='kanban_content']" position="replace">
+            <button >Press</button>
+            <a t-attf-href="/web#id=#{record.id.raw_value}&amp;model=travel.booking&amp;view_type=form" style="background-color: black; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;">View Profile</a>
+        </xpath>
+    </template>
+
+</odoo>

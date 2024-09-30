@@ -1,10 +1,13 @@
 from odoo import models, fields,api
-
+import logging
+_l=logging.getLogger(__name__)
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     travel_history_ids = fields.One2many('travel.booking', 'customer_id', string='Travel History',readonly=True)
     preferences = fields.Text(string='Travel Preferences')
+    previous_company_id=fields.Many2one('res.partner',string="Previous Company",readonly=True)
+   
 
 
     def custom_create_btn(self):
@@ -14,10 +17,17 @@ class ResPartner(models.Model):
     
     @api.model
     def create(self,vals):
-        res=super(ResPartner,self).create(vals)
-        res.preferences="Manali,jaipur"
-        return res
+        return super(ResPartner,self).create(vals)
     
+
+
+
+    def write(self, vals):
+        if 'parent_id' in vals:
+            for partner in self:
+                if partner.parent_id:                   
+                    vals['previous_company_id'] = partner.parent_id.id
+        return super(ResPartner, self).write(vals)
 
     def action_preview_sale_order(self):
         self.ensure_one()
@@ -26,3 +36,4 @@ class ResPartner(models.Model):
             'target': 'self',
             'url': self.get_portal_url(),
         }
+   

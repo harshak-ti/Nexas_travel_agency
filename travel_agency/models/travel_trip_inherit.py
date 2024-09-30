@@ -21,7 +21,9 @@ class TravelTrip(models.Model):
 
 
     def create(self,vals):
-        is_agency_down = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_agency_down')
+        settings = self.env['res.config.settings'].search([], limit=1)
+        # is_agency_down = self.env['ir.config_parameter'].sudo().get_param('travel_agency.is_agency_down')
+        is_agency_down = settings and settings.is_agency_down
         
         if is_agency_down:
             raise models.ValidationError("The server is down. You cannot create new trips at the moment.")
@@ -36,3 +38,7 @@ class TravelTrip(models.Model):
             self.can_trip=bool(is_agency_down)
         else:
             self.can_trip=False
+
+
+    def print_report(self):
+        return self.env.ref("travel_agency.travel_trip_report").report_action(self,config=False)

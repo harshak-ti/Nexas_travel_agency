@@ -1,0 +1,35 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="travel_booking_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="doc" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1>Hello Harshak</h1>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo> -->
+<odoo>
+
+    <template id="travel_trip_report_template">
+
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <t t-esc="o.name"/>
+                        <!-- <t t-esc="data_image_uri('o.image_1920')"/> -->
+                        <img t-att-src="image_data_uri(o.image_1920)" style="width:100px;height:100px;"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="driver_idcard" name="Driver Id Card">
+        <t t-call="web.html_conatiner">
+            <t t-foreach="docs" t-as="o">
+
+
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="web_external_inherit" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[contains(@t-attf-class,'header')]" position="attributes">
+            <attribute name="style">background-color:red;</attribute>
+        </xpath>
+    </template>
+
+</odoo>

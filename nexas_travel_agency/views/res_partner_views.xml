@@ -5,47 +5,32 @@
     <field name="name">res.partner.form.travel.inherit</field>
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="base.view_partner_form" />
+
     <field name="arch" type="xml">
+
+
       <notebook position="after">
-        <button
-          name="custom_create_btn"
-          type="object"
-          string="Save"
-          style="
+        <button name="custom_create_btn" type="object" string="Save" style="
             background-color: black !important;
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
-          "
-        ></button>
-        <button
-          name="action_preview_sale_order"
-          type="object"
-          string="Preview"
-          style="
+          ">        </button>
+        <button name="action_preview_sale_order" type="object" string="Preview" style="
             background-color: black !important;
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
-          "
-        ></button>
+          ">        </button>
       </notebook>
       <group>
         <div>
-          <xpath
-            style="width: 100%"
-            expr="//field[@name='email']"
-            position="after"
-          >
+          <xpath style="width: 100%" expr="//field[@name='email']" position="after">
             <field name="preferences" string="Preferences" />
           </xpath>
         </div>
       </group>
-      <xpath
-        style="width: 100%"
-        expr="//field[@name='preferences']"
-        position="after"
-      >
+      <xpath style="width: 100%" expr="//field[@name='preferences']" position="after">
         <group position="after">
           <field name="travel_history_ids">
             <tree>
@@ -60,21 +45,10 @@
       <field name="phone" position="attributes">
         <attribute name="required">1</attribute>
       </field>
-
-      <xpath expr="//div" position="inside">
-        <div>hello Harshak</div>
+      <xpath expr="//field[@name='function']" position="before">
+        <field name="previous_company_id" readonly="1" groups="!base.group_system" invisible="not previous_company_id or company_type != 'person'"/>
+        <field name="previous_company_id" readonly="0" groups="base.group_system" invisible="not previous_company_id or company_type != 'person'"/>
       </xpath>
-      <!-- <xpath expr="//div[hasclass('text-muted')]" position="attributes">
-                <attribute name="class" add="kanban_img" separator=" "/>
-            </xpath> -->
-      <!-- <xpath expr="//div[hasclass('text-muted')]" position="attributes">
-                <attribute name="class" remove="kanban_img" separator=" "/>
-            </xpath> -->
-      <!-- <xpath expr="//field[@name='phone']" position="attributes">
-        <attribute name="style"
-          >background-color:red;border:2px solid;</attribute
-        >
-      </xpath> -->
       <xpath expr="//field[@name='phone']" position="attributes">
         <attribute name="name">phone</attribute>
       </xpath>
@@ -87,30 +61,10 @@
       <xpath expr="//field[@name='travel_history_ids']" position="attributes">
         <attribute name="readonly">1</attribute>
       </xpath>
-      <!-- <xpath expr="//sheet" position="inside">
-        <notebook>
-          <page string="Notebook"> </page>
-        </notebook>
-      </xpath> -->
-      <!-- <xpath expr="//field[@name='mobile']" position="attributes">
-        <attribute name="invisible">1</attribute>
-      </xpath> -->
+
     </field>
   </record>
-  <!-- <record id="view_partner_tree_inherit_travel" model="ir.ui.view">
-            <field name="name">res.partner.tree.travel.inherit</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_tree"/>
-            <field name="arch" type="xml">
-            
-                    
-                <xpath expr="//div[@class='o_control_panel']" position="inside">
-                        <button name="custom_create_btn" type="object" string="Save" style="background-color: black !important; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;"></button>
-                    </xpath>
-                    
-                    
-            
-                
-            </field>
-        </record> -->
+
+
+
 </odoo>

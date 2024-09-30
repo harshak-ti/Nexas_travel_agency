@@ -13,6 +13,8 @@ class TravelBookingConfirmWizard(models.TransientModel):
         _l.info(f"------------------> Active ids : {ids}")
         sale_ids=self.env['sale.order'].browse(ids)
         _l.info(f"------------------> sale ids : {sale_ids}")
+        _l.info(f"------------------> sale ids : {sale_ids.with_context(validate_not_click = False)}")
+
         sale_ids=sale_ids.with_context(validate_not_click = False)
         # self=self.with_context(validate_not_click = False)
         _l.info(f"----------> wizard context : {self._context}")

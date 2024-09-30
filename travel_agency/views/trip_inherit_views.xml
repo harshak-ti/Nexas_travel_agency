@@ -83,6 +83,10 @@
 
         </div>
       </xpath>
+
+      <xpath expr="//header" position="inside">
+        <button name="print_report" string="Print" type="object" invisible="not id"></button>
+      </xpath>
     </field>
   </record>
 
@@ -93,5 +97,13 @@
     <field name="domain">[('destination','!=',False)]</field>
     <field name="view_id" ref="travel_trip_inherit_view_tree" />
     <field name="context">{'default_trip':True}</field>
+  </record>
+
+  <record id="travel_trip_report" model="ir.actions.report">
+    <field name="name">Trip Details</field>
+    <field name="model">product.product</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">travel_agency.travel_trip_report_template</field>
+    <field name="binding_model_id" ref="model_product_product"/>
   </record>
 </odoo>

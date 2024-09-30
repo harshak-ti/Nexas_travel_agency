@@ -29,6 +29,10 @@
                                     <label for="is_itinerary_allowed" string="Allow Itinerary" class="o_light_label"/>
                                     <field name="is_itinerary_allowed" class="oe_inline" groups="base.group_system"/>
                                 </div>
+                                <div class="mt16 col-12 text-nowrap " style="display:flex; gap:1rem;">
+                                    <label for="is_website_allowed" string="Allow Website" class="o_light_label"/>
+                                    <field name="is_website_allowed" class="oe_inline" groups="base.group_system"/>
+                                </div>
 
                             </div>
                         </div>

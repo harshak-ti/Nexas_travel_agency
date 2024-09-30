@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="email_template_sale_order" model="mail.template">
+      <field name="name">Send : Invitation</field>
+      <field name="model_id" ref="sale.model_sale_order" />
+      <field name="subject"
+        >{{ object.company_id.name }}
+        {{ object.state in ('draft', 'sent') and (ctx.get('proforma') and 'Proforma' or 'Quotation') or 'Order' }}
+        (Ref {{ object.name or 'n/a' }})</field
+      >
+      <field
+        name="email_from"
+        >{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field
+      >
+      <field name="partner_to">{{ object.partner_id.id }}</field>
+      <field name="description"
+        >Used by company when the new individual is created</field
+      >
+      <field name="body_html" type="html">
+        <body
+          style="
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+          "
+        >
+          <div
+            style="
+              max-width: 600px;
+              margin: 20px auto;
+              background-color: white;
+
+              border-radius: 8px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 20px; padding: 20px">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLIq6MKaQ2ul04T4eL4ZdMHAEboHMp907piu2wItVY9YF960hSmmcVgAl1KuVpnmZEMe4&amp;usqp=CAU"
+                alt="Company Logo"
+                style="width: 100px; height: auto; border-radius: 50%"
+              />
+            </div>
+
+            <!-- Thank You Message -->
+            <div style="text-align: center; margin-bottom: 30px; padding: 20px">
+              <h1
+                style="
+                  font-size: 28px;
+                  color: #333;
+                  margin-bottom: 10px;
+                  font-weight: bolder;
+                "
+              >
+                Thank You!
+              </h1>
+              <p
+                style="
+                  font-size: 15px;
+                  color: #777;
+                  margin-bottom: 10px;
+                  line-height: 0;
+                "
+              >
+                Your order has been confirmed
+              </p>
+              <p
+                style="
+                  font-weight: bold;
+                  font-size: 18px;
+                  margin: 20px;
+                  color: #848484;
+                "
+              >
+                Order No: U23HDKJHDI58
+              </p>
+              <a
+                href="#"
+                style="
+                  display: block;
+                  background-color: #007bff;
+                  color: white;
+                  padding: 10px;
+                  text-align: center;
+                  border-radius: 27px;
+                  text-decoration: none;
+                  width: 150px;
+                  margin: 0 auto;
+                  font-weight: bold;
+                "
+                >Order More</a
+              >
+            </div>
+
+            <!-- Order Details -->
+            <div style="margin: 20px 0; padding: 20px">
+              <h2
+                style="
+                  font-size: 20px;
+                  font-weight: bold;
+                  text-align: center;
+                  margin-bottom: 1rem;
+                "
+              >
+                Your Order Details
+              </h2>
+              <table style="width: 100%; border-collapse: collapse">
+                <thead>
+                  <tr>
+                    <th
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        text-align: left;
+                      "
+                    >
+                      Product
+                    </th>
+
+                    <th
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        text-align: right;
+                      "
+                    >
+                      View order page
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                padding: 20px 0;
+                padding: 20px;
+              "
+            >
+              <div style="width: 45%">
+                <p style="margin: 0; font-weight: bold">Delivery Address</p>
+                <p
+                  style="
+                    margin: 5px 0;
+                    color: gray;
+                    font-size: 0.75rem;
+                    line-height: 1.2;
+                  "
+                >
+                  123 Your location here<br />8th Floor,<br />City name here
+                </p>
+              </div>
+              <div style="width: 45%; text-align: right">
+                <p style="margin: 0; font-weight: bold">Estimated Delivery</p>
+                <p
+                  style="
+                    margin: 5px 0;
+                    color: gray;
+                    font-size: 0.75rem;
+                    line-height: 1.2;
+                  "
+                >
+                  January 21, 2025
+                </p>
+              </div>
+            </div>
+
+            <!-- Rate the Order Section -->
+            <div style="text-align: center; margin-top: 30px; padding: 20px">
+              <img
+                src="https://st2.depositphotos.com/47577860/45901/v/450/depositphotos_459010812-stock-illustration-emoji-emoticon-emotion-icon-solid.jpg"
+                alt="Rate Icon"
+                style="
+                  width: 75px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  border-radius: 4rem;
+                "
+              />
+              <h2
+                style="font-size: 18px; margin-bottom: 10px; font-weight: bold"
+              >
+                Rate the order
+              </h2>
+              <p
+                style="
+                  margin-bottom: 10px;
+                  line-height: 0;
+                  color: gray;
+                  font-weight: 300;
+                "
+              >
+                Share your experience, so we can improve our service
+              </p>
+
+              <!-- Star Rating (placeholders, can be updated with icons) -->
+              <div style="margin-bottom: 20px">
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+              </div>
+              <button
+                style="
+                  background-color: #007bff;
+                  color: white;
+                  border: none;
+                  padding: 6px 35px;
+                  border-radius: 21px;
+                  cursor: pointer;
+                  font-size: 13px;
+                "
+              >
+                Rate Now
+              </button>
+            </div>
+
+            <!-- Footer -->
+            <div
+              style="
+                text-align: center;
+                color: #333;
+                margin-top: 40px;
+                padding: 20px;
+              "
+            >
+              <p style="margin: 10px 0; font-weight: bolder; font-size: 1.2rem">
+                We hope to see you again.
+              </p>
+              <div
+                style="
+                  width: 80%;
+                  border: 1px solid #e6e6e6;
+                  margin: 0.5rem auto;
+                "
+              ></div>
+
+              <p
+                style="
+                  margin: 20px 0 10px 0;
+                  font-weight: bold;
+                  font-size: 21px;
+                "
+              >
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #007bff;
+                    border-radius: 50%;
+                    margin: 0px 8px;
+                  "
+                ></span
+                >Company
+              </p>
+
+              <!-- Social Media or Additional Icons -->
+            </div>
+            <div
+              style="
+                text-align: center;
+                background-color: #007bff;
+                padding: 1.2rem 0 0.02rem 0;
+              "
+            >
+              <div style="margin-bottom: 20px">
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0px 8px;
+                  "
+                ></span>
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0 5px;
+                  "
+                ></span>
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0 5px;
+                  "
+                ></span>
+              </div>
+
+              <p style="font-size: 12px; color: #fff">
+                Tel: 012 345 6789 | Email: example@mail.com
+              </p>
+              <p style="font-size: 12px; color: #fff; line-height: 0">
+                2024 Your website name here. All rights reserved.
+              </p>
+              <p style="font-size: 12px">
+                <a href="#" style="color: #fff; text-decoration: none"
+                  >Unsubscribe from our mail list</a
+                >
+              </p>
+              <p
+                style="
+                  font-size: 17px;
+                  color: #fff;
+                  letter-spacing: 0.3rem;
+                  font-weight: 500;
+                "
+              >
+                www.example.com
+              </p>
+            </div>
+          </div>
+        </body>
+      </field>
+      <field
+        name="report_template_ids"
+        eval="[(4, ref('sale.action_report_saleorder'))]"
+      />
+      <field name="lang">{{ object.partner_id.lang }}</field>
+      <field name="auto_delete" eval="True" />
+    </record>
+
+    <record id="mail_template_sale_confirmation_new" model="mail.template">
+      <field name="name">Sales: Order Confirmation</field>
+      <field name="model_id" ref="sale.model_sale_order" />
+      <field name="subject"
+        >{{ object.company_id.name }}
+        {{ (object.get_portal_last_transaction().state == 'pending') and 'Pending Order' or 'Order' }}
+        (Ref {{ object.name or 'n/a' }})</field
+      >
+      <field
+        name="email_from"
+        >{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field
+      >
+      <field name="partner_to">{{ object.partner_id.id }}</field>
+      <field name="description">Sent to customers on order confirmation</field>
+      <field name="body_html" type="html">
+        <body
+          style="
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+          "
+        >
+          <div
+            style="
+              max-width: 600px;
+              margin: 20px auto;
+              background-color: white;
+
+              border-radius: 8px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 20px; padding: 20px">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLIq6MKaQ2ul04T4eL4ZdMHAEboHMp907piu2wItVY9YF960hSmmcVgAl1KuVpnmZEMe4&amp;usqp=CAU"
+                alt="Company Logo"
+                style="width: 100px; height: auto; border-radius: 50%"
+              />
+            </div>
+
+            <!-- Thank You Message -->
+            <div style="text-align: center; margin-bottom: 30px; padding: 20px">
+              <h1
+                style="
+                  font-size: 28px;
+                  color: #333;
+                  margin-bottom: 10px;
+                  font-weight: bolder;
+                "
+              >
+                Thank You!
+              </h1>
+              <p
+                style="
+                  font-size: 15px;
+                  color: #777;
+                  margin-bottom: 10px;
+                  line-height: 0;
+                "
+              >
+                Your order has been confirmed
+              </p>
+              <p
+                style="
+                  font-weight: bold;
+                  font-size: 18px;
+                  margin: 20px;
+                  color: #848484;
+                "
+              >
+                Order No: U23HDKJHDI58
+              </p>
+              <a
+                href="#"
+                style="
+                  display: block;
+                  background-color: #007bff;
+                  color: white;
+                  padding: 10px;
+                  text-align: center;
+                  border-radius: 27px;
+                  text-decoration: none;
+                  width: 150px;
+                  margin: 0 auto;
+                  font-weight: bold;
+                "
+                >Order More</a
+              >
+            </div>
+
+            <!-- Order Details -->
+            <div style="margin: 20px 0; padding: 20px">
+              <h2
+                style="
+                  font-size: 20px;
+                  font-weight: bold;
+                  text-align: center;
+                  margin-bottom: 1rem;
+                "
+              >
+                Your Order Details
+              </h2>
+              <table style="width: 100%; border-collapse: collapse">
+                <thead>
+                  <tr>
+                    <th
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        text-align: left;
+                      "
+                    >
+                      Product
+                    </th>
+
+                    <th
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        text-align: right;
+                      "
+                    >
+                      View order page
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                padding: 20px 0;
+                padding: 20px;
+              "
+            >
+              <div style="width: 45%">
+                <p style="margin: 0; font-weight: bold">Delivery Address</p>
+                <p
+                  style="
+                    margin: 5px 0;
+                    color: gray;
+                    font-size: 0.75rem;
+                    line-height: 1.2;
+                  "
+                >
+                  123 Your location here<br />8th Floor,<br />City name here
+                </p>
+              </div>
+              <div style="width: 45%; text-align: right">
+                <p style="margin: 0; font-weight: bold">Estimated Delivery</p>
+                <p
+                  style="
+                    margin: 5px 0;
+                    color: gray;
+                    font-size: 0.75rem;
+                    line-height: 1.2;
+                  "
+                >
+                  January 21, 2025
+                </p>
+              </div>
+            </div>
+
+            <!-- Rate the Order Section -->
+            <div style="text-align: center; margin-top: 30px; padding: 20px">
+              <img
+                src="https://st2.depositphotos.com/47577860/45901/v/450/depositphotos_459010812-stock-illustration-emoji-emoticon-emotion-icon-solid.jpg"
+                alt="Rate Icon"
+                style="
+                  width: 75px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  border-radius: 4rem;
+                "
+              />
+              <h2
+                style="font-size: 18px; margin-bottom: 10px; font-weight: bold"
+              >
+                Rate the order
+              </h2>
+              <p
+                style="
+                  margin-bottom: 10px;
+                  line-height: 0;
+                  color: gray;
+                  font-weight: 300;
+                "
+              >
+                Share your experience, so we can improve our service
+              </p>
+
+              <!-- Star Rating (placeholders, can be updated with icons) -->
+              <div style="margin-bottom: 20px">
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+              </div>
+              <button
+                style="
+                  background-color: #007bff;
+                  color: white;
+                  border: none;
+                  padding: 6px 35px;
+                  border-radius: 21px;
+                  cursor: pointer;
+                  font-size: 13px;
+                "
+              >
+                Rate Now
+              </button>
+            </div>
+
+            <!-- Footer -->
+            <div
+              style="
+                text-align: center;
+                color: #333;
+                margin-top: 40px;
+                padding: 20px;
+              "
+            >
+              <p style="margin: 10px 0; font-weight: bolder; font-size: 1.2rem">
+                We hope to see you again.
+              </p>
+              <div
+                style="
+                  width: 80%;
+                  border: 1px solid #e6e6e6;
+                  margin: 0.5rem auto;
+                "
+              ></div>
+
+              <p
+                style="
+                  margin: 20px 0 10px 0;
+                  font-weight: bold;
+                  font-size: 21px;
+                "
+              >
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #007bff;
+                    border-radius: 50%;
+                    margin: 0px 8px;
+                  "
+                ></span
+                >Company
+              </p>
+
+              <!-- Social Media or Additional Icons -->
+            </div>
+            <div
+              style="
+                text-align: center;
+                background-color: #007bff;
+                padding: 1.2rem 0 0.02rem 0;
+              "
+            >
+              <div style="margin-bottom: 20px">
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0px 8px;
+                  "
+                ></span>
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0 5px;
+                  "
+                ></span>
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0 5px;
+                  "
+                ></span>
+              </div>
+
+              <p style="font-size: 12px; color: #fff">
+                Tel: 012 345 6789 | Email: example@mail.com
+              </p>
+              <p style="font-size: 12px; color: #fff; line-height: 0">
+                2024 Your website name here. All rights reserved.
+              </p>
+              <p style="font-size: 12px">
+                <a href="#" style="color: #fff; text-decoration: none"
+                  >Unsubscribe from our mail list</a
+                >
+              </p>
+              <p
+                style="
+                  font-size: 17px;
+                  color: #fff;
+                  letter-spacing: 0.3rem;
+                  font-weight: 500;
+                "
+              >
+                www.example.com
+              </p>
+            </div>
+          </div>
+        </body>
+      </field>
+      <field
+        name="report_template_ids"
+        eval="[(4, ref('sale.action_report_saleorder'))]"
+      />
+      <field name="lang">{{ object.partner_id.lang }}</field>
+      <field name="auto_delete" eval="True" />
+    </record>
+
+    <record id="email_template_travel_booking" model="mail.template">
+      <field name="name">Travel Booking Confirmation</field>
+      <field name="model_id" ref="model_travel_booking" />
+      <field name="subject">Booking Confirmation for ${object.reference}</field>
+      <field name="email_from">{{ "" }}</field>
+      <field name="partner_to">{{ object.customer_id.email }}</field>
+
+      <field
+        name="report_template_ids"
+        eval="[(4, ref('nexas_travel_agency.action_travel_booking_report'))]"
+      />
+      <field name="auto_delete" eval="True" />
+
+      <field name="body_html" type="html">
+        <body
+          style="
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+          "
+        >
+          <div
+            style="
+              max-width: 600px;
+              margin: 20px auto;
+              background-color: white;
+
+              border-radius: 8px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 20px; padding: 20px">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLIq6MKaQ2ul04T4eL4ZdMHAEboHMp907piu2wItVY9YF960hSmmcVgAl1KuVpnmZEMe4&amp;usqp=CAU"
+                alt="Company Logo"
+                style="width: 100px; height: auto; border-radius: 50%"
+              />
+            </div>
+
+            <!-- Thank You Message -->
+            <div style="text-align: center; margin-bottom: 30px; padding: 20px">
+              <h1
+                style="
+                  font-size: 28px;
+                  color: #333;
+                  margin-bottom: 10px;
+                  font-weight: bolder;
+                "
+              >
+                Thank You!
+              </h1>
+              <p
+                style="
+                  font-size: 15px;
+                  color: #777;
+                  margin-bottom: 10px;
+                  line-height: 0;
+                "
+              >
+                Your order has been confirmed
+              </p>
+              <p
+                style="
+                  font-weight: bold;
+                  font-size: 18px;
+                  margin: 20px;
+                  color: #848484;
+                "
+              >
+                Order No: U23HDKJHDI58
+              </p>
+              <a
+                href="#"
+                style="
+                  display: block;
+                  background-color: #007bff;
+                  color: white;
+                  padding: 10px;
+                  text-align: center;
+                  border-radius: 27px;
+                  text-decoration: none;
+                  width: 150px;
+                  margin: 0 auto;
+                  font-weight: bold;
+                "
+                >Order More</a
+              >
+            </div>
+
+            <!-- Order Details -->
+            <div style="margin: 20px 0; padding: 20px">
+              <h2
+                style="
+                  font-size: 20px;
+                  font-weight: bold;
+                  text-align: center;
+                  margin-bottom: 1rem;
+                "
+              >
+                Your Order Details
+              </h2>
+              <table style="width: 100%; border-collapse: collapse">
+                <thead>
+                  <tr>
+                    <th
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        text-align: left;
+                      "
+                    >
+                      Product
+                    </th>
+
+                    <th
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        text-align: right;
+                      "
+                    >
+                      View order page
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr style="padding: 0.7rem 0.4rem">
+                    <td
+                      style="
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                        width: 40%;
+                      "
+                    >
+                      <img
+                        src="https://b2861582.smushcdn.com/2861582/wp-content/uploads/2023/02/splash-01-605-v1.png?lossy=2&amp;strip=1&amp;webp=1"
+                        style="width: 8rem; height: 8rem"
+                      />
+                    </td>
+                    <td
+                      style="width: 100%; display: flex; flex-direction: column"
+                    >
+                      <div class="">
+                        <h4 style="font-size: 0.9rem; font-weight: 500">
+                          Lorem ipsum
+                        </h4>
+                        <p style="font-size: 0.7rem; font-weight: 300">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat
+                        </p>
+                        <div
+                          style="width: 40%; border: 1px solid #007bff"
+                        ></div>
+                        <div
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            line-height: 0;
+                          "
+                        >
+                          <h4 style="font-size: 0.8rem">Quantity : 1</h4>
+                          <div
+                            style="
+                              padding: 0.4rem 1.2rem;
+                              background-color: #007bff;
+                              color: #fff;
+                              border-radius: 2rem;
+                              text-align: center;
+                            "
+                          >
+                            <h3
+                              style="
+                                font-weight: 600;
+                                font-size: 0.8rem;
+                                color: #fff;
+                              "
+                            >
+                              30$
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                padding: 20px 0;
+                padding: 20px;
+              "
+            >
+              <div style="width: 45%">
+                <p style="margin: 0; font-weight: bold">Delivery Address</p>
+                <p
+                  style="
+                    margin: 5px 0;
+                    color: gray;
+                    font-size: 0.75rem;
+                    line-height: 1.2;
+                  "
+                >
+                  123 Your location here<br />8th Floor,<br />City name here
+                </p>
+              </div>
+              <div style="width: 45%; text-align: right">
+                <p style="margin: 0; font-weight: bold">Estimated Delivery</p>
+                <p
+                  style="
+                    margin: 5px 0;
+                    color: gray;
+                    font-size: 0.75rem;
+                    line-height: 1.2;
+                  "
+                >
+                  January 21, 2025
+                </p>
+              </div>
+            </div>
+
+            <!-- Rate the Order Section -->
+            <div style="text-align: center; margin-top: 30px; padding: 20px">
+              <img
+                src="https://st2.depositphotos.com/47577860/45901/v/450/depositphotos_459010812-stock-illustration-emoji-emoticon-emotion-icon-solid.jpg"
+                alt="Rate Icon"
+                style="
+                  width: 75px;
+                  height: auto;
+                  margin-bottom: 10px;
+                  border-radius: 4rem;
+                "
+              />
+              <h2
+                style="font-size: 18px; margin-bottom: 10px; font-weight: bold"
+              >
+                Rate the order
+              </h2>
+              <p
+                style="
+                  margin-bottom: 10px;
+                  line-height: 0;
+                  color: gray;
+                  font-weight: 300;
+                "
+              >
+                Share your experience, so we can improve our service
+              </p>
+
+              <!-- Star Rating (placeholders, can be updated with icons) -->
+              <div style="margin-bottom: 20px">
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+                <span style="font-size: 56px; color: #ddd; margin: 0.7rem"
+                  >&#9733;</span
+                >
+              </div>
+              <button
+                style="
+                  background-color: #007bff;
+                  color: white;
+                  border: none;
+                  padding: 6px 35px;
+                  border-radius: 21px;
+                  cursor: pointer;
+                  font-size: 13px;
+                "
+              >
+                Rate Now
+              </button>
+            </div>
+
+            <!-- Footer -->
+            <div
+              style="
+                text-align: center;
+                color: #333;
+                margin-top: 40px;
+                padding: 20px;
+              "
+            >
+              <p style="margin: 10px 0; font-weight: bolder; font-size: 1.2rem">
+                We hope to see you again.
+              </p>
+              <div
+                style="
+                  width: 80%;
+                  border: 1px solid #e6e6e6;
+                  margin: 0.5rem auto;
+                "
+              ></div>
+
+              <p
+                style="
+                  margin: 20px 0 10px 0;
+                  font-weight: bold;
+                  font-size: 21px;
+                "
+              >
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #007bff;
+                    border-radius: 50%;
+                    margin: 0px 8px;
+                  "
+                ></span
+                >Company
+              </p>
+
+              <!-- Social Media or Additional Icons -->
+            </div>
+            <div
+              style="
+                text-align: center;
+                background-color: #007bff;
+                padding: 1.2rem 0 0.02rem 0;
+              "
+            >
+              <div style="margin-bottom: 20px">
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0px 8px;
+                  "
+                ></span>
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0 5px;
+                  "
+                ></span>
+                <span
+                  style="
+                    display: inline-block;
+                    width: 21px;
+                    height: 21px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    margin: 0 5px;
+                  "
+                ></span>
+              </div>
+
+              <p style="font-size: 12px; color: #fff">
+                Tel: 012 345 6789 | Email: example@mail.com
+              </p>
+              <p style="font-size: 12px; color: #fff; line-height: 0">
+                2024 Your website name here. All rights reserved.
+              </p>
+              <p style="font-size: 12px">
+                <a href="#" style="color: #fff; text-decoration: none"
+                  >Unsubscribe from our mail list</a
+                >
+              </p>
+              <p
+                style="
+                  font-size: 17px;
+                  color: #fff;
+                  letter-spacing: 0.3rem;
+                  font-weight: 500;
+                "
+              >
+                www.example.com
+              </p>
+            </div>
+          </div>
+        </body>
+      </field>
+    </record>
+  </data>
+</odoo>
