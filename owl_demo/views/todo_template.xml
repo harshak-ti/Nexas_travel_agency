@@ -1,0 +1,17 @@
+<!-- todo_list/views/todo_templates.xml -->
+
+<odoo>
+    <template id="TodoListTemplate">
+        <div>
+            <h1>Todo List</h1>
+            <ul>
+                <t t-foreach="state.todos" t-as="todo">
+                    <li>
+                        <input type="checkbox" t-att-checked="todo.done" t-on-click="toggleDone(todo)" />
+                        <span t-esc="todo.name"></span>
+                    </li>
+                </t>
+            </ul>
+        </div>
+    </template>
+</odoo>

@@ -13,80 +13,80 @@
                 max-width: 53%;
                 ">
 
-                <div style="border:none; width: 100%;margin: auto;">
-                
-                <group style="border:none;padding: 1rem;">
-<group>
+                    <div style="border:none; width: 100%;margin: auto;">
 
-    <field name="name"/>
-    <field name="date_of_opening"/>
-    <field name="opening_time" widget="time"/>
-    <field name="closing_time" widget="time"/>
-    <field name="net_worth"/>
-    <field name="total_employess"/>
-    <field name="verified"/>
-    <field name="currency_id"/>
-    <field name="tax_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-    <field name="agency_type"/>
-</group>
-            <group>
-                <field name="description"/>
-                
-                <field name="document"/>
-                <field name="description_html" widget="html"/>
-                <field name="owner_image" widget="image" style="height: 100px; width: 100px;"/>
-            </group>
-                
-            </group>
-        </div>
+                        <group style="border:none;padding: 1rem;">
+                            <group>
+
+                                <field name="name"/>
+                                <field name="date_of_opening"/>
+                                <field name="opening_time" widget="time"/>
+                                <field name="closing_time" widget="time"/>
+                                <field name="net_worth"/>
+                                <field name="total_employess"/>
+                                <field name="verified"/>
+                                <field name="currency_id"/>
+                                <field name="tax_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="agency_type"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+
+                                <field name="document"/>
+                                <field name="description_html" widget="html"/>
+                                <field name="owner_image" widget="image" style="height: 100px; width: 100px;"/>
+                            </group>
+
+                        </group>
+                    </div>
                 </sheet>
-                
-                <div class="oe_chatter" style="margin: 2rem auto;" >
+
+                <div class="oe_chatter" style="margin: 2rem auto;">
                     <field name="message_follower_ids" groups="base.group_user"/>
                     <field name="message_ids"/>
                 </div>
             </form>
-</field>
-</record>
+        </field>
+    </record>
 
-<record id="view_travel_agency_details_tree" model="ir.ui.view">
-<field name="name">travel.agency.tree</field>
-<field name="model">travel.agency</field>
-<field name="arch" type="xml">
-<tree string="Agency Details">
-    <field name="name"/>
-    <field name="date_of_opening"/>
-    <field name="opening_time"/>
-    <field name="closing_time"/>
-    <field name="agency_type"/>
-    <field name="verified"/>
-    <field name="currency_id"/>
-    <field name="tax_amount"/>
-    <field name="owner_image"/>
+    <record id="view_travel_agency_details_tree" model="ir.ui.view">
+        <field name="name">travel.agency.tree</field>
+        <field name="model">travel.agency</field>
+        <field name="arch" type="xml">
+            <tree string="Agency Details">
+                <field name="name"/>
+                <field name="date_of_opening"/>
+                <field name="opening_time"/>
+                <field name="closing_time"/>
+                <field name="agency_type"/>
+                <field name="verified"/>
+                <field name="currency_id"/>
+                <field name="tax_amount"/>
+                <field name="owner_image"/>
 
-</tree>
-</field>
-</record>
+            </tree>
+        </field>
+    </record>
 
 
-<record id="view_travel_agency_details_kanban" model="ir.ui.view">
-<field name="name">tarvel.agency.kanban</field>
-<field name="model">travel.agency</field>
-<field name="arch" type="xml">
-<kanban>
-    <field name="name"/>
-    <field name="date_of_opening"/>
-    <field name="opening_time"/>
-    <field name="closing_time"/>
-    <field name="agency_type"/>
-    <field name="verified"/>
-    <field name="currency_id"/>
-    <field name="tax_amount"/>
-    <field name="owner_image"/>
-    <templates>
-        <t t-name="kanban-box">
+    <record id="view_travel_agency_details_kanban" model="ir.ui.view">
+        <field name="name">tarvel.agency.kanban</field>
+        <field name="model">travel.agency</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="date_of_opening"/>
+                <field name="opening_time"/>
+                <field name="closing_time"/>
+                <field name="agency_type"/>
+                <field name="verified"/>
+                <field name="currency_id"/>
+                <field name="tax_amount"/>
+                <field name="owner_image"/>
+                <templates>
+                    <t t-name="kanban-box">
 
-            <!-- <div t-attf-class="border-black d-flex align-items-center justify-content-between kanban_section">
+                        <!-- <div t-attf-class="border-black d-flex align-items-center justify-content-between kanban_section">
                                 <img alt="Owner Image" t-att-src="kanban_image('travel.agency', 'owner_image', record.id.raw_value)" class="kanban_img"/>
                                 
                                 
@@ -112,12 +112,12 @@
                             </div> -->
 
 
-            <div class="card" style="border: 1px solid #000; display: flex; padding: 20px; box-sizing: border-box;display:flex;flex-direction:row;">
-                <div class="left-section" style=" border-right: 2px dotted #0077b6; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-right: 20px; box-sizing: border-box;">
-                    <div class="arrow" style=" color: #0077b6;">
-                        <img src="https://t4.ftcdn.net/jpg/06/40/04/89/360_F_640048974_VeXJUEUzGbSzbAeXQwbwnjDOz3ahRjjO.jpg" width="50" height="50"></img>
-                    </div>
-                    <div class="text" style="writing-mode: vertical-rl;
+                        <div class="card" style="border: 1px solid #000; display: flex; padding: 20px; box-sizing: border-box;display:flex;flex-direction:row;">
+                            <div class="left-section" style=" border-right: 2px dotted #0077b6; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-right: 20px; box-sizing: border-box;">
+                                <div class="arrow" style=" color: #0077b6;">
+                                    <img src="https://t4.ftcdn.net/jpg/06/40/04/89/360_F_640048974_VeXJUEUzGbSzbAeXQwbwnjDOz3ahRjjO.jpg" width="50" height="50"></img>
+                                </div>
+                                <div class="text" style="writing-mode: vertical-rl;
                                     text-orientation: mixed;
                                     color: #e63946;
                                
@@ -129,98 +129,98 @@
                                     line-height: 0;
                                     margin: 2rem 0;
                                     font-size: 1rem;">
-                        <p>PLAN YOUR GETAWAY</p>
-                        <p> THE EASY WAY</p>
-                    </div>
-                    <div class="arrow" style=" color: #0077b6;">
-                        <img src="https://t4.ftcdn.net/jpg/06/40/04/89/360_F_640048974_VeXJUEUzGbSzbAeXQwbwnjDOz3ahRjjO.jpg" width="50" height="50"></img>
-                    </div>
-                </div>
-                <div class="right-section" style=" display: flex; flex-direction: column; justify-content: space-between; padding-left: 20px; box-sizing: border-box;">
-                    <div class="header" style="display: flex; flex-direction: column;">
-                        <div class="title" style="font-family: 'Brush Script MT', cursive;
+                                    <p>PLAN YOUR GETAWAY</p>
+                                    <p> THE EASY WAY</p>
+                                </div>
+                                <div class="arrow" style=" color: #0077b6;">
+                                    <img src="https://t4.ftcdn.net/jpg/06/40/04/89/360_F_640048974_VeXJUEUzGbSzbAeXQwbwnjDOz3ahRjjO.jpg" width="50" height="50"></img>
+                                </div>
+                            </div>
+                            <div class="right-section" style=" display: flex; flex-direction: column; justify-content: space-between; padding-left: 20px; box-sizing: border-box;">
+                                <div class="header" style="display: flex; flex-direction: column;">
+                                    <div class="title" style="font-family: 'Brush Script MT', cursive;
                                         color: #0077b6;
                                         margin: 0;
                                         font-size: 3rem;
                                         font-weight: 600;">
-                            <field name="name" />
+                                        <field name="name" />
  Travels</div>
-                        <div class="subtitle" style=" color: #e63946;
+                                    <div class="subtitle" style=" color: #e63946;
                                         margin: 0;
                                         font-size: 1rem;
                                         font-weight: 700;">FULL SERVICE TRAVEL AGENCY</div>
-                    </div>
-                    <div class="info" style="display: flex; flex-direction: column;">
-                        <div class="name" style=" color: #0077b6;
+                                </div>
+                                <div class="info" style="display: flex; flex-direction: column;">
+                                    <div class="name" style=" color: #0077b6;
                                         margin: 0;
                                         font-size: 1rem;
                                         font-weight: 600;">ESTELLE DARCY</div>
-                        <div class="position" style="color: #e63946;
+                                    <div class="position" style="color: #e63946;
                                         margin: 0;
                                         font-size: .9rem;
                                         font-weight: 500;">FOUNDER</div>
-                        <div class="contact" style="display: flex;
+                                    <div class="contact" style="display: flex;
                                         flex-direction: column;
                                         margin-top: 10px;
                                         font-weight: 600;">
-                            <div class="item" style="display: flex; align-items: center;  color: #0077b6; margin: 5px 0;">
-                                <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>123 Anywhere St., Any City</div>
-                            <div class="item" style="display: flex; align-items: center; color: #0077b6; margin: 5px 0;">
-                                <i class="fas fa-phone-alt" style="margin-right: 10px;"></i>+123-456-7890</div>
-                            <div class="item" style="display: flex; align-items: center;  color: #0077b6; margin: 5px 0;">
-                                <i class="fas fa-envelope" style="margin-right: 10px;"></i>hello@reallygreatsite.com</div>
-                        </div>
-                    </div>
-                </div>
+                                        <div class="item" style="display: flex; align-items: center;  color: #0077b6; margin: 5px 0;">
+                                            <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>123 Anywhere St., Any City</div>
+                                        <div class="item" style="display: flex; align-items: center; color: #0077b6; margin: 5px 0;">
+                                            <i class="fas fa-phone-alt" style="margin-right: 10px;"></i>+123-456-7890</div>
+                                        <div class="item" style="display: flex; align-items: center;  color: #0077b6; margin: 5px 0;">
+                                            <i class="fas fa-envelope" style="margin-right: 10px;"></i>hello@reallygreatsite.com</div>
+                                    </div>
+                                </div>
+                            </div>
 
-                <!-- <div class="barcode">
+                            <!-- <div class="barcode">
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSraNIPQn7h7tntj_wbM810mOgb8JG0uSAn6E3G9S79buRuPqFpwiNGiRyM03ed2XQAhqg&amp;usqp=CAU"/>
                                  </div>
                                -->
-                <div class="barcode-section" style="display: flex;flex-direction:column; justify-content: space-between; align-items: center;">
-                    <div class="plane-icon" style=" color: #0077b6;">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqdeh9_UJd4S3Ui5IjFXzbwDAlUhwHaQy8xgWJW1VKqd8FPA9CVXtB1NUSuY2Xs-B2exs&amp;usqp=CAU" width="100" height="100"></img>
-                    </div>
-                    <div class="text" style=" color: #0077b6;
+                            <div class="barcode-section" style="display: flex;flex-direction:column; justify-content: space-between; align-items: center;">
+                                <div class="plane-icon" style=" color: #0077b6;">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqdeh9_UJd4S3Ui5IjFXzbwDAlUhwHaQy8xgWJW1VKqd8FPA9CVXtB1NUSuY2Xs-B2exs&amp;usqp=CAU" width="100" height="100"></img>
+                                </div>
+                                <div class="text" style=" color: #0077b6;
   display: flex;
   
   flex-direction: column;
   font-size: 1rem;
   font-weight: 700;">BEST<p style="line-height:0;">TRAVEL</p> DEALS</div>
-                    <div class="seat" style="border: 2px solid #0077b6; padding: 1rem;font-size:1rem;  color: #0077b6; text-align: center;">SEAT 10A</div>
+                                <div class="seat" style="border: 2px solid #0077b6; padding: 1rem;font-size:1rem;  color: #0077b6; text-align: center;">SEAT 10A</div>
 
-                </div>
-            </div>
+                            </div>
+                        </div>
 
 
-        </t>
-    </templates>
-</kanban>
-</field>
-</record>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
 
-<record id="view_travel_agency_graph" model="ir.ui.view">
-<field name="name">travel.agency.graph</field>
-<field name="model">travel.agency</field>
-<field name="arch" type="xml">
-<graph string="" sample="True">
-    <field name="name"/>
-    <field name="opening_time" interval="day" string="Opening Time"/>
-    <field name="closing_time" interval="day" string="Closing Time"/>
-</graph>
-</field>
-</record>
+    <record id="view_travel_agency_graph" model="ir.ui.view">
+        <field name="name">travel.agency.graph</field>
+        <field name="model">travel.agency</field>
+        <field name="arch" type="xml">
+            <graph string="" sample="True">
+                <field name="name"/>
+                <field name="opening_time" interval="day" string="Opening Time"/>
+                <field name="closing_time" interval="day" string="Closing Time"/>
+            </graph>
+        </field>
+    </record>
 
-<record id="action_travel_agency_details" model="ir.actions.act_window">
-<field name="name">Travel Agency Details</field>
-<field name="res_model">travel.agency</field>
-<field name="view_mode">tree,form,kanban,graph</field>
-<field name="help" type="html">
-<p class="o_view_nocontent_smilling_face">
+    <record id="action_travel_agency_details" model="ir.actions.act_window">
+        <field name="name">Travel Agency Details</field>
+        <field name="res_model">travel.agency</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smilling_face">
                 Write the agency details
-</p>
-</field>
+            </p>
+        </field>
 
-</record>
+    </record>
 
 </odoo>

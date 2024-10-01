@@ -38,5 +38,8 @@
 
     <menuitem id="travel_agency_vehicles_menu_item" name="Vehicles Details" parent="travel_agency_configure_menu" action="action_travel_agency_vehicles" />
 
+    <menuitem id="crm_menu_leads" name="Leads" parent="travel_agency_main_menu" action="crm.crm_lead_all_leads" groups="crm.group_use_lead" sequence="5"/>
+    <!-- <menuitem id="travel_choice" name="Choices" parent="travel_agency_main_menu" action="action_choice"/> -->
+
 
 </odoo>

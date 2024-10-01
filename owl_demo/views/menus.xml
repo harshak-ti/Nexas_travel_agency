@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    
-    <menuitem
-        id="sample_menu"
-        name="Owl"
-       />
 
-    <menuitem
-        id="sample_menuitem"
-        name="Sample"
-        action="action_sample"
-        parent="sample_menu"
-     />
+    <menuitem id="sample_menu" name="Owl" />
+
+
 
 </odoo>

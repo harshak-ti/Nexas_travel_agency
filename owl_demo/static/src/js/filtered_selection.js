@@ -1,3 +1,5 @@
+/** @odoo-module */
+
 import { Component } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 
@@ -16,3 +18,4 @@ class FilteredSelectionField extends Component {
 registry.category("fields").add("status_selection", {
     component: FilteredSelectionField,
 });
+

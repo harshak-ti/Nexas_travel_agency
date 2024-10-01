@@ -7,13 +7,12 @@
     'depends': ['web'],
     'data':[
         'security/ir.model.access.csv',
-        'views/sample_view.xml',
-        'views/menus.xml'
+        # 'views/todo_template.xml',
         ],
     'assets': {
 
         'web.assets_backend':[
-            'owl_demo/static/src/js/Counter.js',
+            # "owl_demo/static/src/js/components/TodoList.js",
             'owl_demo/static/src/js/main.js'
         ]
    

@@ -1,7 +1,10 @@
-from odoo import fields,models
+# todo_list/models/todo.py
 
-class Sample(models.Model):
-    _name="sample"
-    
+from odoo import models, fields
 
-    name=fields.Char(string="Name")
+class TodoList(models.Model):
+    _name = 'todo.list'
+    _description = 'Todo List'
+
+    name = fields.Char(string='Task', required=True)
+    done = fields.Boolean(string='Done', default=False)

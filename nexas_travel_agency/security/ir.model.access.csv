@@ -12,3 +12,4 @@ access_travel_report,access.travel.report.user,model_travel_report,base.group_us
 access_travel_agency,access.travel.agency.user,model_travel_agency,base.group_user,1,1,1,1
 access_travel_agency_drivers,access.travel.agency.drivers.user,model_travel_agency_drivers,base.group_user,1,1,1,1
 access_travel_agency_vehicles,access.travel.agency.vehicles.user,model_travel_agency_vehicles,base.group_user,1,1,1,1
+

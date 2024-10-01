@@ -1,18 +1,17 @@
-/** @odoo-module **/
+/** @odoo-module */
+import { Component } from "@odoo/owl";
+import { registry } from "@web/core/registry";
 
-import {Component} from "@odoo/owl";
-import Counter from "./Counter"
-
-class App extends Component{
-    static template='app';
-    static components={Counter}
-
-    mounted(){
-        this.counter=this.createComponent(Counter,{
-            initialCount:5
-        });
-        this.counter.on('count-changed',(count)=>{
-            console.log(`Count changed to ${count}`);
-        })
+class FilteredSelectionField extends Component {
+    static template = 'FilteredSelectionFieldTemplate'; // Template definition
+    
+    // This is where we filter the options
+    get filteredOptions() {
+        return this.props.selection.filter(option => option[0] !== 'nothing');
     }
 }
+
+// Register the widget to be used in the view
+registry.category("fields").add("status_selection", {
+    component: FilteredSelectionField,
+});
