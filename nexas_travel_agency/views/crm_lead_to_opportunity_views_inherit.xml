@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="view_crm_lead2opportunity_partner_inherit" model="ir.ui.view">
         <field name="name">crm.lead2opportunity.partner.form.inherit</field>
         <field name="model">crm.lead2opportunity.partner</field>
         <field name="inherit_id" ref="crm.view_crm_lead2opportunity_partner" />
         <field name="arch" type="xml">
+            <xpath expr="//group[@name='action']" position="after">
 
+                <group name="actions" invisible="name != 'convert'" string="Customer" col="1">
+                    <field name="actions" nolabel="1" widget="radio"/>
+                    <group col="2">
+                        <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_vat': True}" invisible="actions != 'exist'" required="actions == 'exist'"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='action']" position="attributes">
 
-            <field name="action" position="attributes">
-                <attribute name="widget">status_selection</attribute>
-            </field>
-
-
+                <attribute name="invisible">1</attribute>
+            </xpath>
         </field>
     </record>
-
-    <record id="crm.action_crm_lead2opportunity_partner" model="ir.actions.act_window">
-        <field name="name">Convert to opportunity</field>
-        <field name="res_model">crm.lead2opportunity.partner</field>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="view_crm_lead2opportunity_partner_inherit"/>
-        <field name="target">new</field>
-    </record>
-
-
 </odoo>

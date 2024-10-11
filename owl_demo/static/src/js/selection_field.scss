@@ -1,0 +1,12 @@
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-item {
+    margin-bottom: 10px; /* Space between radio buttons */
+}
+
+.radio-item input[type="radio"] {
+    margin-right: 10px; /* Space between radio and label */
+}

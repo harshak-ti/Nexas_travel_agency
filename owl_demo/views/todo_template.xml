@@ -1,17 +1,67 @@
 <!-- todo_list/views/todo_templates.xml -->
 
 <odoo>
-    <template id="TodoListTemplate">
-        <div>
-            <h1>Todo List</h1>
-            <ul>
-                <t t-foreach="state.todos" t-as="todo">
-                    <li>
-                        <input type="checkbox" t-att-checked="todo.done" t-on-click="toggleDone(todo)" />
-                        <span t-esc="todo.name"></span>
-                    </li>
-                </t>
-            </ul>
-        </div>
-    </template>
+    <record id="sample_view_form" model="ir.ui.view">
+        <field name="name">sample.view.form</field>
+        <field name="model">todo.list</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <header>
+                        <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <group>
+                        <field name="name" />
+                        <field name="done" />
+                        <field name="priority" widget="category_color"/>
+                        <field name="action" widget="limited_selection"/>
+                        <field name="stage_id" />
+
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sample_view_tree" model="ir.ui.view">
+        <field name="name">sample.view.tree</field>
+        <field name="model">todo.list</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="done" />
+                <field name="priority" />
+                <field name="action" />
+                <field name="stage_id" />
+
+            </tree>
+        </field>
+    </record>
+    <record id="sample_view_kanban" model="ir.ui.view">
+        <field name="name">sample.view.kanban</field>
+        <field name="model">todo.list</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="stage_id">
+                <field name="name" />
+                <field name="done" />
+                <field name="priority" />
+                <field name="action" />
+                <field name="stage_id" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <field name="name" />
+                        <field name="done" />
+                        <field name="priority" />
+                        <field name="action" />
+
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="sample_action" model="ir.actions.act_window">
+        <field name="name">owl demo sample action</field>
+        <field name="res_model">todo.list</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
 </odoo>

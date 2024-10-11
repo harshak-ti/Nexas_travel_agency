@@ -12,4 +12,4 @@ from . import travel_agency_driver
 from. import travel_agency_vehicles
 from . import travel_trip
 # from . import choices
-# from . import crm_lead_to_opportunity_inherit
+from . import crm_lead_to_opportunity_inherit

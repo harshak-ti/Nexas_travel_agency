@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <t t-name="OWLFieldLimitedSelection">
+        <div class="radio-group">
+            <t t-foreach="filteredOptions" t-as="option" t-key="option[0]">
+                <div class="radio-item">
+                    <input type="radio" t-att-name="props.name" t-att-value="option[0]" t-on-change="() => optionSelected(option[0])"/>
+                    <label t-att-for="option[0]">
+                        <t t-esc="option[1]"/>
+                    </label>
+                </div>
+            </t>
+        </div>
+
+    </t>
+
+
+
+
+
+
+</odoo>
